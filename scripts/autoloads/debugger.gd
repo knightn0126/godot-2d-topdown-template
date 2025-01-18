@@ -18,6 +18,8 @@ func _unhandled_key_input(event: InputEvent):
 				SceneManager.swap_scenes(start_screen, get_tree().root, current_level, Const.TRANSITION.FADE_TO_BLACK)
 			KEY_CTRL:
 				_set_player_ghost()
+			KEY_TAB:
+				_toggle_screen_view()
 			KEY_0:
 				_reset_player_velocity()
 			KEY_3:
@@ -31,6 +33,11 @@ func _set_player_ghost():
 		var coll: CollisionShape2D = player.get_node_or_null("CollisionShape2D")
 		if coll:
 			coll.disabled = !coll.disabled
+
+func _toggle_screen_view():
+	for player: PlayerEntity in Globals.get_players():
+		player.visible = !player.visible
+		player.health_controller.hp_bar.visible = player.visible
 
 ## Fully restore players health.
 func _restore_player_health():
