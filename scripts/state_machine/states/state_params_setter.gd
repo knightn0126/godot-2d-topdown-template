@@ -4,7 +4,7 @@ extends State
 class_name StateParamsSetter
 
 @export_category("Set Properties")
-@export var node: Node2D: ## The node in which you want to set the properties.[br]It has priority over param_key.
+@export var node: Node: ## The node in which you want to set the properties.[br]It has priority over param_key.
 	set(value):
 		node = value
 		notify_property_list_changed()
