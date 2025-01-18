@@ -20,13 +20,19 @@ var animation_state: AnimationNodeStateMachinePlayback
 
 func enter():
 	if animation_player and not animation.is_empty():
-		animation_player.play(animation)
-		await animation_player.animation_finished
+		if !animation_player.has_animation(animation):
+			push_warning("Animation %s not found in %s." % [animation, owner.name])
+		else:
+			animation_player.play(animation)
+			await animation_player.animation_finished
 		complete()
 	if animation_tree and not animation.is_empty():
-		animation_state = animation_tree.get("parameters/playback") if not animation_state else animation_state
-		animation_state.start(animation)
-		await animation_tree.animation_finished
+		if !animation_tree.has_animation(animation):
+			push_warning("Animation %s not found in %s." % [animation, owner.name])
+		else:
+			animation_state = animation_tree.get("parameters/playback") if not animation_state else animation_state
+			animation_state.start(animation)
+			await animation_tree.animation_finished
 		complete()
 	if saved_position:
 		animation_player.seek(saved_position)
