@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name HpBar
 
 @export_category("Texture")
 @export var texture_under: TextureRect ## The texture to show under the main bar.
