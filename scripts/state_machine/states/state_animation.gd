@@ -17,6 +17,14 @@ class_name StateAnimation
 
 var saved_position: float
 var animation_state: AnimationNodeStateMachinePlayback
+var animation_states: Array[String]
+
+func _ready():
+	if animation_tree:
+		for prop in animation_tree.tree_root.get_property_list():
+			if not prop.name.begins_with('states/'):
+				continue
+			animation_states.push_back(prop.name.get_slice("/", 1))
 
 func enter():
 	if animation_player and not animation.is_empty():
@@ -27,7 +35,7 @@ func enter():
 			await animation_player.animation_finished
 		complete()
 	if animation_tree and not animation.is_empty():
-		if !animation_tree.has_animation(animation):
+		if !animation_states.has(animation):
 			push_warning("Animation %s not found in %s." % [animation, owner.name])
 		else:
 			animation_state = animation_tree.get("parameters/playback") if not animation_state else animation_state
