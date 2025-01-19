@@ -39,8 +39,12 @@ var invert_moving_direction := false ## Inverts the movement direction. Useful f
 var safe_position := Vector2.ZERO ## The last position of the entity that was deemed safe. It is set before a jump and is eventually reassigned to the entity by calling the return_to_safe_position method.
 
 @export_group("Actions")
-var is_moving: bool ## True if velocity is non-zero.
-var is_running: bool ## Ttrue if the entity is moving and speed > max_speed.
+var is_moving: bool: ## True if velocity is non-zero.
+	get():
+		return velocity != Vector2.ZERO
+var is_running: bool: ## Ttrue if the entity is moving and speed > max_speed.
+	get():
+		return is_moving and speed > max_speed
 var is_jumping: bool ## True during a jump. It is handled by the jump() and end_jump() methods, called by the "jump" animation.
 var is_attacking: bool ## Set to true when the entity enters the on_attack state, false when it leaves it.
 var is_charging := false ## Set to true when the entity is charging an attack.
@@ -64,8 +68,6 @@ func _process(_delta):
 		running_particles.emitting = is_running && not is_jumping
 
 func _physics_process(_delta):
-	is_moving = velocity != Vector2.ZERO
-	is_running = is_moving and speed > max_speed
 	_check_falling()
 	move_and_slide()
 
