@@ -126,12 +126,14 @@ func jump():
 	if not is_jumping:
 		safe_position = global_position
 		is_jumping = true
-		collision_mask ^= 1 << 2
+		collision_mask ^= (1 << 2) | (1 << 1)
+		collision_layer ^= 1 << 1
 
 ##To be called at the end of a jump.
 func end_jump():
 	is_jumping = false
-	collision_mask ^= 1 << 2
+	collision_mask ^= (1 << 2) | (1 << 1)
+	collision_layer ^= 1 << 1
 
 ##Starts an attack.
 func attack():
