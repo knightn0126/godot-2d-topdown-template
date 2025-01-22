@@ -41,8 +41,8 @@ func _toggle_screen_view():
 
 ## Fully restore players health.
 func _restore_player_health():
-	for player in Globals.get_players():
-		player.recover_hp(100)
+	for player: PlayerEntity in Globals.get_players():
+		player.health_controller.change_hp(player.health_controller.max_hp - player.health_controller.hp)
 
 ## Set players velocity to zero.
 func _reset_player_velocity():
