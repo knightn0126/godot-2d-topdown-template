@@ -1,6 +1,6 @@
 class_name StartScreen extends Control
 
-const template_version: String = "0.1"
+const template_version: String = "1.0"
 
 @export_file("*.tscn") var start_level = "" ## The level from which the game starts when starting a new game.
 
