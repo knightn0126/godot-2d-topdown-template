@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c8twd7bu2dct0"]
 
-[ext_resource type="Script" path="res://scenes/system/debug_window.gd" id="1_05m0w"]
+[ext_resource type="Script" uid="uid://fnutmu58yf14" path="res://scenes/system/debug_window.gd" id="1_05m0w"]
 
 [node name="DebugWindow" type="CanvasLayer" node_paths=PackedStringArray("anim_label", "info_label")]
 script = ExtResource("1_05m0w")

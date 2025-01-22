@@ -27,7 +27,7 @@ func _ready():
 		sfx_slider.value = user_prefs.sfx_volume
 	if language_dropdown:
 		var lang = Globals.get_selected_language()
-		var lang_index = Globals.LANGUAGES.find(lang)
+		var lang_index = Const.LANGUAGES.find(lang)
 		language_dropdown.selected = lang_index
 		TranslationServer.set_locale(lang)
 
@@ -39,7 +39,7 @@ func close_settings():
 	queue_free()
 
 func _populate_language_dropdown():
-	for lang in Globals.LANGUAGES:
+	for lang in Const.LANGUAGES:
 		language_dropdown.add_item(lang)
 
 func _on_close_button_pressed():
@@ -56,7 +56,7 @@ func _on_sfx_slider_value_changed(_value):
 	user_prefs.sfx_volume = _value
 
 func _on_language_dropdown_item_selected(_index):
-	var lang = Globals.LANGUAGES[_index]
+	var lang = Const.LANGUAGES[_index]
 	user_prefs.language = lang
 	language_changed.emit(lang)
 	TranslationServer.set_locale(lang)
