@@ -60,7 +60,7 @@ func _ready():
 	_init_screen_notifier()
 	_init_attack_cooldown_timer()
 	animation_tree.active = true
-	hit.connect(func(): if on_hit: on_hit.enable())
+	hit.connect(func(): if on_hit: enable_state(on_hit))
 
 func _process(_delta):
 	_update_animation()
@@ -75,9 +75,9 @@ func _init_screen_notifier():
 	if on_screen_entered or on_screen_exited:
 		screen_notifier = VisibleOnScreenNotifier2D.new()
 		if on_screen_entered:
-			screen_notifier.screen_entered.connect(func(): on_screen_entered.enable())
+			screen_notifier.screen_entered.connect(func(): enable_state(on_screen_entered))
 		if on_screen_exited:
-			screen_notifier.screen_exited.connect(func(): on_screen_exited.enable())
+			screen_notifier.screen_exited.connect(func(): enable_state(on_screen_exited))
 		add_child(screen_notifier)
 
 func _init_attack_cooldown_timer():
@@ -94,7 +94,7 @@ func _update_animation():
 ##internal - Checks if the entity is inside an area that it is considered a falling zone.
 func _check_falling():
 	if not is_falling and not is_jumping and fall_detector.is_colliding() and on_fall:
-		on_fall.enable()
+		enable_state(on_fall)
 
 ##Used to load entity data (from a save file).
 func receive_data(data: DataEntity):
@@ -144,7 +144,7 @@ func attack():
 	else:
 		attack_cooldown_timer.stop()
 		if on_attack:
-			on_attack.enable()
+			enable_state(on_attack)
 
 ##To be called at the end of an attack.
 func end_attack():
@@ -180,6 +180,10 @@ func move_and_face(destination, direction = Vector2.ZERO):
 		facing = direction
 	elif direction:
 		facing = Const.DIR_VECTOR[direction]
+
+func enable_state(state: State):
+	if health_controller.hp > 0:
+		state.enable()
 
 ##Stops the entity, setting its velocity to 0.
 func stop(smoothly := false):

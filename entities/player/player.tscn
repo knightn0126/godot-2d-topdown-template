@@ -558,9 +558,9 @@ script = ExtResource("9_p7spi")
 animation_tree = NodePath("../../../AnimationTree")
 animation = "hurt"
 
-[node name="is_hurting" type="Node" parent="StateMachine/hurt" index="1"]
+[node name="is_hurting" type="Node" parent="StateMachine/hurt" index="1" node_paths=PackedStringArray("node")]
 script = ExtResource("9_fvq3l")
-param_key = "entity"
+node = NodePath("../../..")
 on_enter = Dictionary[String, Variant]({
 "is_hurting": true
 })
@@ -621,9 +621,9 @@ script = ExtResource("9_p7spi")
 animation_tree = NodePath("../../../AnimationTree")
 animation = "hurt"
 
-[node name="is_hurting" type="Node" parent="StateMachine/death" index="1"]
+[node name="is_hurting" type="Node" parent="StateMachine/death" index="1" node_paths=PackedStringArray("node")]
 script = ExtResource("9_fvq3l")
-param_key = "entity"
+node = NodePath("../../..")
 on_enter = Dictionary[String, Variant]({
 "is_hurting": true
 })
