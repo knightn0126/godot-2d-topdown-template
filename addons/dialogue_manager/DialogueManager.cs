@@ -116,6 +116,11 @@ namespace DialogueManagerRuntime
             return instance;
         }
 
+        public static Resource CreateResourceFromText(string text)
+        {
+            return (Resource)Instance.Call("create_resource_from_text", text);
+        }
+
         public static async Task<DialogueLine?> GetNextDialogueLine(Resource dialogueResource, string key = "", Array<Variant>? extraGameStates = null)
         {
             var instance = (Node)Instance.Call("_bridge_get_new_instance");
@@ -211,18 +216,15 @@ namespace DialogueManagerRuntime
 
             if (result is Task taskResult)
             {
-                // await Tasks and handle result if it is a Task<T>
                 await taskResult;
-                var taskType = taskResult.GetType();
-                if (taskType.IsGenericType && taskType.GetGenericTypeDefinition() == typeof(Task<>))
+                try 
                 {
-                    var resultProperty = taskType.GetProperty("Result");
-                    var taskResultValue = resultProperty.GetValue(taskResult);
-                    EmitSignal(SignalName.Resolved, (Variant)taskResultValue);
-                }
-                else
+                    Variant value = (Variant)taskResult.GetType().GetProperty("Result").GetValue(taskResult);
+                    EmitSignal(SignalName.Resolved, value);
+                } 
+                catch (Exception err) 
                 {
-                    EmitSignal(SignalName.Resolved, null);
+                    EmitSignal(SignalName.Resolved);
                 }
             }
             else

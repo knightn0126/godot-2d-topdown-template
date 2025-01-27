@@ -7,6 +7,7 @@ const SUPPORTED_BUILTIN_TYPES = [
 	TYPE_STRING,
 	TYPE_STRING_NAME,
 	TYPE_ARRAY,
+	TYPE_PACKED_STRING_ARRAY,
 	TYPE_VECTOR2,
 	TYPE_VECTOR3,
 	TYPE_VECTOR4,
@@ -27,7 +28,7 @@ static func is_supported(thing) -> bool:
 
 static func resolve_property(builtin, property: String):
 	match typeof(builtin):
-		TYPE_ARRAY, TYPE_DICTIONARY, TYPE_QUATERNION, TYPE_STRING, TYPE_STRING_NAME:
+		TYPE_ARRAY, TYPE_PACKED_STRING_ARRAY, TYPE_DICTIONARY, TYPE_QUATERNION, TYPE_STRING, TYPE_STRING_NAME:
 			return builtin[property]
 
 		# Some types have constants that we need to manually resolve
@@ -405,6 +406,15 @@ static func resolve_vector2_property(vector: Vector2, property: String):
 			return Vector2.UP
 		"DOWN":
 			return Vector2.DOWN
+		
+		"DOWN_LEFT":
+			return Vector2(-1, 1)
+		"DOWN_RIGHT":
+			return Vector2(1, 1)
+		"UP_LEFT":
+			return Vector2(-1, -1)
+		"UP_RIGHT":
+			return Vector2(1, -1)
 
 	return vector[property]
 

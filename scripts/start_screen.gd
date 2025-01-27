@@ -1,7 +1,5 @@
 class_name StartScreen extends Control
 
-const template_version: String = "1.0"
-
 @export_file("*.tscn") var start_level = "" ## The level from which the game starts when starting a new game.
 
 var user_prefs: UserPrefs
@@ -11,7 +9,8 @@ var user_prefs: UserPrefs
 @onready var version_num: Label = %VersionNum
 
 func _ready() -> void:
-	version_num.text = "v%s" % template_version
+	var version = ProjectSettings.get_setting("application/config/version")
+	version_num.text = "v%s" % version
 	user_prefs = UserPrefs.load_or_create()
 	_check_continue()
 	TranslationServer.set_locale(user_prefs.language)

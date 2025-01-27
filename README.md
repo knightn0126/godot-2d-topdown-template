@@ -110,7 +110,7 @@ User preferences (like music settings or language) are also managed by scripts f
 
 ## Dialogue System
 
-Dialogues are managed by the plugin `DialogueManager` from [nathanhoad](https://github.com/nathanhoad). For more information check out the [official repository](https://github.com/nathanhoad/godot_dialogue_manager).
+Dialogues are managed by the plugin `DialogueManager` (version 3.0) from [nathanhoad](https://github.com/nathanhoad). For more information check out the [official repository](https://github.com/nathanhoad/godot_dialogue_manager).
 
 ## Tilemaps
 
