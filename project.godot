@@ -19,16 +19,15 @@ config/icon="res://icon.svg"
 
 Globals="*res://scripts/autoloads/Globals.gd"
 SceneManager="*res://scripts/autoloads/SceneManager.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DataManager="*res://scripts/autoloads/DataManager.gd"
 Debugger="*res://scripts/autoloads/debugger.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
-general/balloon_path="res://dialogues/balloons/dialogue_balloon.tscn"
-general/states=["Globals"]
-general/new_with_template=false
+runtime/state_autoload_shortcuts=["Globals"]
+runtime/balloon_path="res://dialogues/balloons/dialogue_balloon.tscn"
 
 [display]
 
