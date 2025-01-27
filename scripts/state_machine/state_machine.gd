@@ -11,6 +11,7 @@ class_name StateMachine
 		current_state_name = current_state.name if current_state else StringName()
 		update_configuration_warnings()
 @export var disabled := false ## Determines if disable this StateMachine
+@export var debug := false ## Prints to the console when state changes
 
 @onready var n_of_states = get_child_count()
 
@@ -76,7 +77,8 @@ func _enter_states():
 	for state in states:
 		state.enter()
 		state.active = !disabled
-	print("%s entered states: %s" % [get_parent().name, states.map(func(state): return state.name)])
+	if debug:
+		print("%s entered states: %s" % [get_parent().name, states.map(func(state): return state.name)])
 
 func _exit_states():
 	for state in states:

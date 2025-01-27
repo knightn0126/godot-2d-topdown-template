@@ -1,6 +1,7 @@
 @tool
 extends Area2D
 class_name InteractionArea
+## Adds a pre-configured Area2D, ready to be set as an interaction_area in a StateInteract.
 
 func _init() -> void:
   monitorable = false

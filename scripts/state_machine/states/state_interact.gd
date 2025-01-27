@@ -1,7 +1,7 @@
 @tool
 @icon("../icons/StateInteract.svg")
 extends State
-##Handle entity interactions.
+## Handle entity interactions.
 class_name StateInteract
 
 @export var interaction_area: InteractionArea: ## Interaction will trigger only if entity is inside this area.
@@ -9,7 +9,7 @@ class_name StateInteract
 		interaction_area = value
 		update_configuration_warnings()
 @export var on_leaving: Array[State] ## States to enable on exiting the area.
-@export var action_trigger := "" ## The input action that will trigger the interaction. Leave empty to trigger on area entered.
+@export var action_trigger := "" ## The input action (as in the Input Map) that will trigger the interaction. Leave empty to trigger on area entered.
 @export_category("Conditions")
 @export var conditions: Array[Check] = []: ## A list of conditions to met in order to trigger the interaction.
 	set(value):
@@ -18,8 +18,8 @@ class_name StateInteract
 @export var on_condition_not_met: Dictionary[String, State] = {} ## Provide a state to enable if a certain condition is not met. Use the condition's resource_name as key of the Dictionary.
 @export_category("Settings")
 @export var one_shot := true ## If true, it can be interacted only once. Useful for chests or pickable items.
-@export var reset_delay := 0.2 ## Determines after how many seconds the interactable can be triggered again. It works only if one_shot is disabled.
-@export_flags("Area:4", "Body:8", "Area and Body:12") var check = 4 ## Determines which elements the interaction area should control: only other areas, only bodies, or both.
+@export var reset_delay := 0.2 ## Determines after how many seconds the interactable can be triggered again. It works only if [member one_shot] is disabled.
+@export_flags("Area:4", "Body:8", "Area and Body:12") var check = 4 ## Determines which elements the [member interaction_area] should check: only other areas, only bodies, or both.
 
 var entity: CharacterEntity
 var interacting := false
@@ -77,7 +77,7 @@ func _can_interact() -> bool:
 
 func _do_interaction():
 	interacting = true
-	if is_instance_valid(entity):
+	if is_instance_valid(entity) and state_machine.debug:
 		print(entity.name, " interacted with ", get_path())
 	complete({"entity": entity})
 	if !one_shot:

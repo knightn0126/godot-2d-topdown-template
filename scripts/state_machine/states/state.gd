@@ -5,13 +5,13 @@ class_name State
 
 @export var disabled := false ## Set to true to avoid processing this state.
 @export_category("Advance")
-## States to enable when this state completes or when timer times out.[br]
-## In a [i]StateInteract[/i] are the states to enable when the interaction triggers.
+## States to enable when this state completes or when timer times expires.[br]
+## In a [i]StateInteract[/i] these are the states activated when the interaction is triggered.
 @export var on_completion: Array[State]
 @export_group("Await Timer")
-@export var time_range := Vector2.ZERO ## If greather than 0, await N seconds before completing the state, where N is a random value between min (x) and max (y).
+@export var time_range := Vector2.ZERO ## If greater than 0, waits for N seconds before completing the state, where N is a random value between the minimum (x) and maximum (y) range.
 
-var active := false: ## True if the state is the current processing state in the StateMachine.
+var active := false: ## Indicates whether the state is currently active and being processed by the StateMachine.
 	set(value):
 		active = value
 		process_mode = PROCESS_MODE_INHERIT if active else PROCESS_MODE_DISABLED
@@ -38,7 +38,7 @@ func enable(params = null): ## Enables this state.
 		await timer.timeout
 		_enable_on_completion(params)
 
-func disable():
+func disable(): ## Disables this state.
 	if state_machine:
 		state_machine.disable_state(self)
 
