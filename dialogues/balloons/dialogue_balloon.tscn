@@ -79,6 +79,7 @@ theme = SubResource("Theme_vnod2")
 
 [node name="NameContainer" type="Panel" parent="Balloon"]
 z_index = 1
+layout_mode = 0
 offset_left = 20.0
 offset_top = 225.0
 offset_right = 180.0
