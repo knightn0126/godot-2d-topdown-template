@@ -142,3 +142,15 @@ Parent node that contains the script `transfer.gd` that performs the transfer, w
 - `level_path`: the path of the level to transfer to. Leave empty if you want to move within the same level
 - `destination_name`: the name of the node to use as a reference to set the destination position. This node should have assigned the "destination" group to work properly
 - `facing`: changes the facing direction of the player, forcing it to face the direction configured here. Useful if the starting Transfer is East, so the player is facing right when interacting with it, but the destination is North, so the player will need to face down upon arriving.
+
+## 🤝 Contributing
+
+Contributions are welcome. Feel free to submit issues or pull requests on the [GitHub repository](https://github.com/stesproject/godot-2d-topdown-template).
+
+## 📄 License
+
+This template is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Made with ❤️ in Italy
