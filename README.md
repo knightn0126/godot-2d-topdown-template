@@ -24,7 +24,7 @@ A comprehensive game template designed for Godot 4, providing everything you nee
 ## ⚠️ Notice
 
 I am gradually releasing more in-depth documentation on my site.
-For sections that are already completed I will link to the updated documentation page; 
+For sections that are already completed I will link to the updated documentation page;
 for other sections, in the meantime, I will leave the documentation here.
 
 In general, to learn more about a specific topic, you can directly check the code. All the important properties and functions are fully documented.
@@ -33,38 +33,23 @@ When you start working on your project, you can safely delete all the scenes tha
 
 ## [Character Controller](https://alchemy-pot.web.app/godot-2d-topdown-template/character-controller)
 
+Take full control of your characters: make them move, run, attack, jump, and flash while managing their states seamlessly.
+
 ## [Interaction System](https://alchemy-pot.web.app/godot-2d-topdown-template/interaction-system)
+
+Enable your characters to interact with the game world. Trigger actions such as opening a chest, activating switches, or unlocking doors using the flexible interaction system.
 
 ## Inventory
 
 The inventory manages all the items owned by a player. The project provides a simple node (`Inventory.tscn`) assigned as a child of the player, which shows all the items owned by him. You can delete this inventory and create your own according to your preferences. Press _ESC_ on your keyboard to open/close the inventory.
 
-## Data Management (Save/Load)
+## [Save/Load System](https://alchemy-pot.web.app/godot-2d-topdown-template/save-load-system)
 
-The project provides a data management system. It works in a very simple way: all nodes found in the current level (scene) with the group "save" or "player" will be handled by the save/load system. This is done by the singleton `DataManager`. By default, only data from `StateMachine` and `CharacterEntity` are handled by the system. While these should cover most use cases, you can extend their functionality to your liking via the `DataManager.gd` script.
-
-### "save" group
-
-- StateMachine: By assigning the group "save" to a `StateMachine`, you will save the current state of the StateMachine. This is useful, for example, to handle the state of objects or events, like the open/close state of chests or doors.
-- CharacterEntity: By assigning the group "save" to a `CharacterEntity`, you will save its current position and facing direction.
-
-### "player" group
-
-- Player: Player data is handled differently by the save system and it is saved/loaded without the node needing to be in the "save" group (it must be in the "player" group, though). Players have a `player_entity.gd` script that contains the `get_data` and `receive_data` methods. `get_data` tells what data to save in the save file, while `receive_data` decides what to do with the incoming data from the save file (previously saved).
-  The player's data saved is:
-- position
-- facing direction
-- current hp
-- max hp
-- inventory
-- equipped weapon id
-
-You can extend the `PlayerEntity` class and the saved data as you like.
-
-In all cases, the data will be saved and kept even when moving from one level to another (using a `Transfer`). The data is lost if you close the game without saving (to a file). It is possible to save the data quickly thanks to the singleton `Debugger`, by pressing the _F1_ key on the keyboard.
-You can also return to the main title by pressing the _F2_ key.
+Easily save and load game progress, including player data, entity positions, and the current state of state machines. Saved data persists across levels and can be stored in a file for later retrieval, allowing players to continue from where they left off.
 
 ## [State Management](https://alchemy-pot.web.app/godot-2d-topdown-template/state-machines)
+
+State machines form the backbone of this template, controlling characters, NPCs, enemies, objects, and more. Each state focuses on a single behavior, allowing you to decide when and how states are activated.
 
 ## Scenes Transition
 
@@ -104,6 +89,7 @@ A level is a game area where playable characters, NPCs, any enemies, and props a
 - Events
 
 #### Shaker
+
 Useful to shake the screen. To shake the screen just call the method `play_shake` on the node using a `StateCallable`.
 
 #### GameCamera2D
