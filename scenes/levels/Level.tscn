@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0b0jp36dubff"]
+[gd_scene load_steps=14 format=3 uid="uid://b0b0jp36dubff"]
 
-[ext_resource type="Script" uid="uid://ck5vmap7rlh0x" path="res://scenes/levels/level.gd" id="1_cq0rv"]
+[ext_resource type="Script" uid="uid://dte41yq56gi4u" path="res://scenes/levels/level.gd" id="1_cq0rv"]
 [ext_resource type="PackedScene" uid="uid://8vwu5i52l856" path="res://scenes/system/game_camera.tscn" id="2_d25mt"]
 [ext_resource type="Script" uid="uid://c6wqpvgr6anix" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="2_wlcp4"]
 [ext_resource type="Script" uid="uid://bshuoy6cgjc04" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="3_1nx8s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dla1cv4f46r4r" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="5_k8xa7"]
 [ext_resource type="Script" uid="uid://cm0kexs6uxw8k" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="6_qx4j1"]
 [ext_resource type="PackedScene" path="res://entities/player/player_instantiator.tscn" id="7_a3ws7"]
+[ext_resource type="PackedScene" uid="uid://blwhvsaagf1cc" path="res://scenes/system/virtual_joystick.tscn" id="11_wlcp4"]
 
 [sub_resource type="Resource" id="Resource_shpqk"]
 script = ExtResource("4_h4kvy")
@@ -82,3 +83,18 @@ y_sort_enabled = true
 [node name="Transfers" type="Node2D" parent="."]
 
 [node name="Events" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Virtual Joystick_Move" parent="UI/Control" instance=ExtResource("11_wlcp4")]
+layout_mode = 1
+run_deadzone = 0.9

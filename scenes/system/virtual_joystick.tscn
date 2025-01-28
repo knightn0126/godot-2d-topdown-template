@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://blwhvsaagf1cc"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_cyvjo"]
+[ext_resource type="Script" uid="uid://cuc2m6rndcv6y" path="res://scenes/system/virtual_joystick_ext.gd" id="2_htc3k"]
+
+[node name="VirtualJoystick" instance=ExtResource("1_cyvjo")]
+offset_top = -151.0
+offset_bottom = 149.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_htc3k")
+run_action = "run"
+run_deadzone = 0.9
+deadzone_size = 1.0
+clampzone_size = 35.0
+joystick_mode = 1
+visibility_mode = 2
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+metadata/_edit_use_anchors_ = true
