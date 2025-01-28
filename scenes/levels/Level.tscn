@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b0b0jp36dubff"]
 
-[ext_resource type="Script" uid="uid://ck5vmap7rlh0x" path="res://scenes/levels/level.gd" id="1_cq0rv"]
+[ext_resource type="Script" uid="uid://dte41yq56gi4u" path="res://scenes/levels/level.gd" id="1_cq0rv"]
 [ext_resource type="PackedScene" uid="uid://8vwu5i52l856" path="res://scenes/system/game_camera.tscn" id="2_d25mt"]
 [ext_resource type="Script" uid="uid://c6wqpvgr6anix" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="2_wlcp4"]
 [ext_resource type="Script" uid="uid://bshuoy6cgjc04" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="3_1nx8s"]
