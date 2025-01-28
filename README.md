@@ -1,6 +1,6 @@
 # Godot 2D Top-Down Template
 
-<img src="https://alchemy-pot.web.app/res/2d-topdown-template-godot4.png" width="50%">
+<img src="https://alchemy-pot.web.app/res/2d-topdown-template-godot4.png" width="100%">
 
 A comprehensive game template designed for Godot 4, providing everything you need to kickstart your 2D top-down game development journey.
 
@@ -9,7 +9,7 @@ A comprehensive game template designed for Godot 4, providing everything you nee
 
 ## 🎮 Web Demo
 
-[Play the web demo](https://alchemy-pot.web.app/files/godot-2d-topdown-template/play) to get an idea of the available features.
+[Play the web demo](https://alchemy-pot.web.app/files/godot-2d-topdown-template/play) to get a grasp of the available features.
 
 ## ⚙️ Features
 
