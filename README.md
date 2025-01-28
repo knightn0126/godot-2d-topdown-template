@@ -1,8 +1,27 @@
-# Playable Demo
+# Godot 2D Top-Down Template
 
-https://alchemy-pot.web.app/files/godot-2d-topdown-template/play
+<img src="https://alchemy-pot.web.app/res/2d-topdown-template-godot4.png" width="50%">
 
-# Notice
+A comprehensive game template designed for Godot 4, providing everything you need to kickstart your 2D top-down game development journey.
+
+[![Godot Engine](https://img.shields.io/badge/Godot-4.4%2B-brightgreen)](https://godotengine.org)
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/stesproject/godot-2d-topdown-template)
+
+## 🎮 Web Demo
+
+[Play the web demo](https://alchemy-pot.web.app/files/godot-2d-topdown-template/play) to get an idea of the available features.
+
+## ⚙️ Features
+
+- Character Controller (basic movement + run, jump, attack, flash)
+- Health Controller with optional health bars
+- Interaction System
+- State Management using State Machines
+- Save/Load System
+- Inventory Management
+- ...and more!
+
+## ⚠️ Notice
 
 I am gradually releasing more in-depth documentation on my site.
 For sections that are already completed I will link to the updated documentation page; 
@@ -12,13 +31,9 @@ In general, to learn more about a specific topic, you can directly check the cod
 You can also try the template launching the web demo from the link above, or download and launch the project from the Godot editor (F5).
 When you start working on your project, you can safely delete all the scenes that start with "playground\_" and configure your starting level in the `start_level` property of the `start_screen.tscn` scene.
 
-## Character Controller
+## [Character Controller](https://alchemy-pot.web.app/godot-2d-topdown-template/character-controller)
 
-https://alchemy-pot.web.app/godot-2d-topdown-template/character-controller
-
-## Interaction System
-
-https://alchemy-pot.web.app/godot-2d-topdown-template/interaction-system
+## [Interaction System](https://alchemy-pot.web.app/godot-2d-topdown-template/interaction-system)
 
 ## Inventory
 
@@ -49,9 +64,7 @@ You can extend the `PlayerEntity` class and the saved data as you like.
 In all cases, the data will be saved and kept even when moving from one level to another (using a `Transfer`). The data is lost if you close the game without saving (to a file). It is possible to save the data quickly thanks to the singleton `Debugger`, by pressing the _F1_ key on the keyboard.
 You can also return to the main title by pressing the _F2_ key.
 
-## State Machines
-
-https://alchemy-pot.web.app/godot-2d-topdown-template/state-machines
+## [State Management](https://alchemy-pot.web.app/godot-2d-topdown-template/state-machines)
 
 ## Scenes Transition
 
