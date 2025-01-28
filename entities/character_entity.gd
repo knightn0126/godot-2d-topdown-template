@@ -152,7 +152,7 @@ func end_attack():
 			attack_cooldown_timer.start(attack_speed)
 
 ##Applies a flash to all children Sprite2D nodes found in group "flash" of the entity. 
-func flash(power := 0.0, duration := 0.1, color := Color.TRANSPARENT):
+func flash(power := 0.0, duration := 0.15, color := Color.TRANSPARENT):
 	var nodes_to_flash: Array[Node] = get_children(true).filter(func(n: Node): return n.is_in_group(Const.GROUP.FLASH))
 	for n in nodes_to_flash:
 		n.material.set_shader_parameter("power", power)
