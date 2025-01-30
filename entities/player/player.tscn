@@ -8,13 +8,13 @@
 [ext_resource type="Script" uid="uid://b3ctbvwsexswi" path="res://scripts/state_machine/states/state_input_listener.gd" id="4_b1v48"]
 [ext_resource type="Script" uid="uid://igey4j36or78" path="res://components/health_controller.gd" id="5_gx6sm"]
 [ext_resource type="Texture2D" uid="uid://2hk61pfrsnoq" path="res://entities/player/chara-hero.png" id="6_afbqv"]
-[ext_resource type="PackedScene" path="res://particles/smoke_particles.tscn" id="6_dxaj8"]
+[ext_resource type="PackedScene" uid="uid://bvi5a0lq3brjw" path="res://particles/smoke_particles.tscn" id="6_dxaj8"]
 [ext_resource type="Script" uid="uid://ddifg1cabao3g" path="res://scripts/state_machine/states/state_idle.gd" id="8_bp05k"]
 [ext_resource type="Script" uid="uid://di3e8lyqvjft4" path="res://scripts/state_machine/states/state_params_setter.gd" id="9_fvq3l"]
 [ext_resource type="Script" uid="uid://btmy7sadqiuav" path="res://scripts/state_machine/states/state_animation.gd" id="9_p7spi"]
 [ext_resource type="Script" uid="uid://b4jgftt0t4d1e" path="res://scripts/state_machine/states/state_impulse.gd" id="12_m3ydn"]
 [ext_resource type="Script" uid="uid://dd2m5xedjwd4m" path="res://scripts/state_machine/states/state_callable.gd" id="14_gx6sm"]
-[ext_resource type="PackedScene" path="res://scenes/menus/inventory.tscn" id="15_gx6sm"]
+[ext_resource type="PackedScene" uid="uid://05uhe60taf6a" path="res://components/inventory.tscn" id="15_gx6sm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1npff"]
 radius = 23.0
@@ -465,12 +465,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" node_paths=PackedStringArray("on_transfer_start", "on_transfer_end", "health_controller", "running_particles", "on_attack", "on_fall") groups=["player"] instance=ExtResource("1_fnaeb")]
+[node name="Player" node_paths=PackedStringArray("on_transfer_start", "on_transfer_end", "health_controller", "inventory", "running_particles", "on_attack", "on_fall") groups=["player"] instance=ExtResource("1_fnaeb")]
 y_sort_enabled = false
 script = ExtResource("2_x37y0")
 on_transfer_start = NodePath("StateMachine/auto")
 on_transfer_end = NodePath("StateMachine/move")
 health_controller = NodePath("HealthController")
+inventory = NodePath("Inventory")
 running_particles = NodePath("SmokeParticles")
 on_attack = NodePath("StateMachine/attack")
 on_fall = NodePath("StateMachine/fall")
@@ -628,9 +629,8 @@ on_enter = Dictionary[String, Variant]({
 "is_hurting": true
 })
 
-[node name="Inventory" parent="." index="11" node_paths=PackedStringArray("player") instance=ExtResource("15_gx6sm")]
+[node name="Inventory" parent="." index="11" instance=ExtResource("15_gx6sm")]
 visible = false
-player = NodePath("..")
 
 [node name="HitBox" parent="." index="12"]
 position = Vector2(0, 0)

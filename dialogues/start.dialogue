@@ -1,6 +1,6 @@
 ~ forest_citizen_talk
 
-Citizen: [[Hi|Hello]], you can open your Inventory by pressing the ESC key! Did you know it? [ID:HI_HELLO_YOU_CAN_OPEN_YOUR_IN_2D6CE2]
+Citizen: Open inventory tip [ID:HI_HELLO_YOU_CAN_OPEN_YOUR_IN_2D6CE2]
 - Sure [ID:SURE_1DB999]
 	Citizen: Great! [ID:GREAT_2A898E]
 - No [ID:NO_FC8B52]

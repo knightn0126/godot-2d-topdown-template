@@ -7,7 +7,7 @@ settings;Impostazioni;Settings
 quit;Esci;Quit
 KEY_NEEDED_DF895F;La porta è chiusa e c'è bisogno di una chiave per aprirla.;The door is closed and you need a key to open it.
 CONTENTS_FOUND_A9FEC0;Hai trovato:\n1 Chiave!;You found:\n1 Key!
-HI_HELLO_YOU_CAN_OPEN_YOUR_IN_2D6CE2;[[Ciao|Hey]], puoi aprire il tuo inventario premendo il tasto ESC!\nLo sapevi?;[[Hi|Hello]], you can open your Inventory by pressing the ESC key!\nDid you know it?
+HI_HELLO_YOU_CAN_OPEN_YOUR_IN_2D6CE2;"[[Ciao|Hey]], puoi aprire il tuo inventario premendo il tasto ""I""!\nLo sapevi?";"[[Hi|Hello]], you can open your Inventory by pressing the ""I"" key!\nDid you know it?"
 SURE_1DB999;Certo;Sure
 GREAT_2A898E;Bene!;Great!
 NO_FC8B52;No...;No...
