@@ -80,17 +80,12 @@ To manage the list of languages you can check the constant `LANGUAGES` in `Const
 
 A level is a game area where playable characters, NPCs, any enemies, and props are present. The base node for levels is `Level.tscn`, which has attached the script `level.gd`. The Level node can be used as a starting node for creating new levels. It already has a structure of nodes within it, making it fully functional. Exploring the present nodes, we find:
 
-- Shaker
 - GameCamera2D
 - Layers
 - Props
 - Entities
 - Transfers
 - Events
-
-#### Shaker
-
-Useful to shake the screen. To shake the screen just call the method `play_shake` on the node using a `StateCallable`.
 
 #### GameCamera2D
 
