@@ -56,10 +56,13 @@ func get_destination(destination_name: String):
 	return destination
 
 func get_current_level():
-	var level = get_tree().get_first_node_in_group(Const.GROUP.LEVEL)
+	var level: Level = get_tree().get_first_node_in_group(Const.GROUP.LEVEL)
 	return level
 
 func load_last_saved_level():
 	var level_to_load = DataManager.get_file_data().game_data.level
 	if level_to_load:
 		SceneManager.swap_scenes(level_to_load, get_tree().root, get_current_level(), Const.TRANSITION.FADE_TO_WHITE)
+
+func get_node_inventory(node):
+	return node.inventory if node.get("inventory") else null

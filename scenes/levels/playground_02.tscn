@@ -550,7 +550,7 @@ point_count = 2
 
 [node name="Playground_02" instance=ExtResource("1_1jysu")]
 
-[node name="GameCamera2D" parent="." index="1"]
+[node name="GameCamera2D" parent="." index="0"]
 limit_left = -128
 limit_right = 1664
 limit_bottom = 640
