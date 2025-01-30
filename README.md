@@ -4,7 +4,7 @@
 
 A comprehensive game template designed for Godot 4, providing everything you need to kickstart your 2D top-down game development journey.
 
-[![Godot Engine](https://img.shields.io/badge/Godot-4.4%2B-brightgreen)](https://godotengine.org)
+[![Godot Engine](https://img.shields.io/badge/Godot-4.3%2B-brightgreen)](https://godotengine.org)
 [![GitHub](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/stesproject/godot-2d-topdown-template)
 
 ## 🎮 Web Demo
