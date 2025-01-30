@@ -56,7 +56,7 @@ func get_destination(destination_name: String):
 	return destination
 
 func get_current_level():
-	var level = get_tree().get_first_node_in_group(Const.GROUP.LEVEL)
+	var level: Level = get_tree().get_first_node_in_group(Const.GROUP.LEVEL)
 	return level
 
 func load_last_saved_level():
