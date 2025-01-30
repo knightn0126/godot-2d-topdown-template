@@ -133,6 +133,12 @@ Parent node that contains the script `transfer.gd` that performs the transfer, w
 
 Contributions are welcome. Feel free to submit issues or pull requests on the [GitHub repository](https://github.com/stesproject/godot-2d-topdown-template).
 
+## 🙏 Credits
+
+- **nathanhoad** for [Godot Dialogue Manager](https://github.com/nathanhoad/godot_dialogue_manager)
+- **baconandgames** for [Godot4 Game Template](https://github.com/baconandgames/godot4-game-template)
+- **dandeliondino** for [Tile Bit Tools](https://github.com/dandeliondino/tile_bit_tools) 
+
 ## 📄 License
 
 This template is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
