@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://8vwu5i52l856" path="res://scenes/system/game_camera.tscn" id="2_d25mt"]
 [ext_resource type="TileSet" uid="uid://bqgpil207dwjc" path="res://tilesets/tileset_01.tres" id="3_r7s3x"]
 [ext_resource type="Script" uid="uid://c7b1xfu55p5mn" path="res://scripts/tilemap_navigation.gd" id="4_6158f"]
-[ext_resource type="PackedScene" path="res://entities/player/player_instantiator.tscn" id="7_a3ws7"]
+[ext_resource type="PackedScene" uid="uid://bjahstm66rjpf" path="res://entities/player/player_instantiator.tscn" id="7_a3ws7"]
 
 [node name="Level" type="Node2D" groups=["level"]]
 position = Vector2(-4.82253e-07, 2.05796e-08)

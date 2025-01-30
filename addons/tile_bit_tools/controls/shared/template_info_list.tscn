@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://j24kxq3gk7ry"]
 
-[ext_resource type="Script" path="res://addons/tile_bit_tools/controls/shared/template_info_list.gd" id="1_6r84n"]
+[ext_resource type="Script" uid="uid://b32f4e4nvjlwh" path="res://addons/tile_bit_tools/controls/shared/template_info_list.gd" id="1_6r84n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7nl4"]
 

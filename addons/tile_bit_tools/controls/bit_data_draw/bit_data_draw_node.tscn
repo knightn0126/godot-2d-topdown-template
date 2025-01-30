@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dx12yxyy8bhfm"]
 
-[ext_resource type="Script" path="res://addons/tile_bit_tools/controls/bit_data_draw/bit_data_draw.gd" id="1_2rdsg"]
-[ext_resource type="Script" path="res://addons/tile_bit_tools/controls/bit_data_draw/bit_data_draw_node.gd" id="1_jpipc"]
+[ext_resource type="Script" uid="uid://qxawvn85i3yu" path="res://addons/tile_bit_tools/controls/bit_data_draw/bit_data_draw.gd" id="1_2rdsg"]
+[ext_resource type="Script" uid="uid://bjh24cjg8w3nc" path="res://addons/tile_bit_tools/controls/bit_data_draw/bit_data_draw_node.gd" id="1_jpipc"]
 
 [node name="DrawViewport" type="SubViewport"]
 disable_3d = true

@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://bpngueajdvw8v"]
 
-[ext_resource type="Script" path="res://addons/tile_bit_tools/controls/tiles_preview/tiles_view.gd" id="1_7t85k"]
-[ext_resource type="Script" path="res://addons/tile_bit_tools/controls/bit_data_draw/bit_data_draw.gd" id="1_kiwr1"]
+[ext_resource type="Script" uid="uid://ub4ki6uieuij" path="res://addons/tile_bit_tools/controls/tiles_preview/tiles_view.gd" id="1_7t85k"]
+[ext_resource type="Script" uid="uid://qxawvn85i3yu" path="res://addons/tile_bit_tools/controls/bit_data_draw/bit_data_draw.gd" id="1_kiwr1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1ndd"]
 

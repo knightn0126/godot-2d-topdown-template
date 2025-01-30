@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="DataWeapon" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="DataWeapon" load_steps=3 format=3 uid="uid://bwwneuh3ges0r"]
 
-[ext_resource type="Script" path="res://items/weapons/data_weapon.gd" id="1_81vel"]
+[ext_resource type="Script" uid="uid://bc7pmqpgxatnh" path="res://items/weapons/data_weapon.gd" id="1_81vel"]
 [ext_resource type="Texture2D" path="res://items/weapons/sword_1_icon.tres" id="1_n305n"]
 
 [resource]
@@ -10,3 +10,4 @@ power = 1
 speed = 0.5
 icon = ExtResource("1_n305n")
 change_hp = 0
+hide_from_inventory = false

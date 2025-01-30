@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://ctyv8lewirl1l"]
 
-[ext_resource type="Script" path="res://addons/tile_bit_tools/controls/tiles_inspector/template_section/terrain_picker.gd" id="1_wswd4"]
+[ext_resource type="Script" uid="uid://duxnq5ul6m2uc" path="res://addons/tile_bit_tools/controls/tiles_inspector/template_section/terrain_picker.gd" id="1_wswd4"]
 
 [node name="TerrainPicker" type="HBoxContainer"]
 anchors_preset = 10

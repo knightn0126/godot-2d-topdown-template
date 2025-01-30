@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://tj1gu603wkvo"]
 
-[ext_resource type="Script" path="res://addons/tile_bit_tools/controls/shared/inspector_section_button.gd" id="1_nbqv8"]
+[ext_resource type="Script" uid="uid://dnbp4try6eqkj" path="res://addons/tile_bit_tools/controls/shared/inspector_section_button.gd" id="1_nbqv8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwoex"]
 
