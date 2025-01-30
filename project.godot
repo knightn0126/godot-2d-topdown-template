@@ -26,7 +26,6 @@ Globals="*res://scripts/autoloads/Globals.gd"
 SceneManager="*res://scripts/autoloads/SceneManager.gd"
 DataManager="*res://scripts/autoloads/DataManager.gd"
 Debugger="*res://scripts/autoloads/debugger.gd"
-Shaker="*res://addons/shaker/src/Shaker.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
@@ -43,7 +42,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/tile_bit_tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/tile_bit_tools/plugin.cfg")
 
 [filesystem]
 
