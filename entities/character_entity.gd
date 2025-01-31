@@ -97,11 +97,18 @@ func _check_falling():
 	if not is_falling and not is_jumping and fall_detector.is_colliding() and on_fall:
 		enable_state(on_fall)
 
-##Used to load entity data (from a save file).
+## Used to load entity data (from a save file).
 func receive_data(data: DataEntity):
 	if data:
 		global_position = data.position
 		facing = data.facing
+
+## Get the entity data to save.
+func get_data():
+	var data = DataEntity.new()
+	data.position = global_position
+	data.facing = facing
+	return data
 
 ##Moves the entity towards a position, with the possibility to modify speed and friction.
 func move_towards(_position):
@@ -174,8 +181,8 @@ func return_to_safe_position():
 	if safe_position != Vector2.ZERO:
 		global_position = safe_position
 
-##Place the entity to a different position facing towards a direction.
-func move_and_face(destination, direction = Vector2.ZERO):
+##Place the entity to a different position facing towards a specific direction.
+func reposition_and_face(destination, direction = Vector2.ZERO):
 	position = destination
 	if direction is Vector2 and direction != Vector2.ZERO:
 		facing = direction
