@@ -49,7 +49,7 @@ func _transfer_to_position(entity):
 	Globals.transfer_start.emit()
 	var destination = Globals.get_destination(destination_name)
 	if destination:
-		entity.move_and_face(destination.position, destination.facing)
+		entity.reposition_and_face(destination.position, destination.facing)
 	else:
 		push_warning("%s: destination %s not found!" % [get_path(), destination])
 	await get_tree().create_timer(0.5).timeout

@@ -99,10 +99,17 @@ func _physics_update_states(delta):
 		if state.active:
 			state.physics_update(delta)
 
+## Used to load the state machine data (from a save file).
 func receive_data(data: DataState):
 	if data:
 		var state_node: State = get_child(data.state_index)
 		state_node.enable(params)
+
+## Get the state machine data to save.
+func get_data() -> DataState:
+	var data = DataState.new()
+	data.state_index = current_state.get_index()
+	return data
 
 func enable_state_by_name(state_name: String):
 	var state_node: State = get_node_or_null(state_name)

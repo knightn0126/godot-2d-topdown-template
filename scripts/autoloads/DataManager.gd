@@ -4,6 +4,10 @@ extends Node
 
 # We always keep a reference to the SaveFileManager resource here to prevent it from unloading.
 var _file: SaveFileManager
+# The method name to call on nodes that need to receive data from the save file.
+const RECEIVE_DATA_METHOD = "receive_data"
+# The method name to call on nodes that need to provide data to the save file.
+const GET_DATA_METHOD = "get_data"
 
 signal game_saved
 signal game_loaded
@@ -14,11 +18,11 @@ func _ready():
 func get_file_data():
 	return _file
 
-## Called when starting anew game
+## Called when starting a new game.
 func reset_file_data():
 	_file = SaveFileManager.new()
 
-## Called when loading a game
+## Called when loading a game.
 func load_file_data():
 	_file = SaveFileManager.load_save_file()
 
@@ -33,7 +37,7 @@ func save_level_data():
 	_save_nodes_data()
 	_save_players_data()
 
-## Used to load nodes state data of the level when entering the level.
+## Used to load nodes state data of the level when entering a level.
 func load_level_data():
 	_load_nodes_data()
 	_load_players_data()
@@ -62,10 +66,10 @@ func _load_game_data():
 func _load_nodes_data():
 	for node: Node in _get_save_nodes():
 		var path = String(node.get_path())
-		if path not in get_file_data().nodes_data:
-			get_file_data().nodes_data[path] = _get_node_data(node)
-		if node.has_method("receive_data"):
-			node.receive_data(get_file_data().nodes_data[path])
+		if path not in get_file_data().nodes_data and node.has_method(GET_DATA_METHOD):
+			get_file_data().nodes_data[path] = node.call(GET_DATA_METHOD)
+		if node.has_method(RECEIVE_DATA_METHOD):
+			node.call(RECEIVE_DATA_METHOD, get_file_data().nodes_data[path])
 
 func _load_players_data():
 	var players = Globals.get_players()
@@ -75,15 +79,15 @@ func _load_players_data():
 
 func _save_nodes_data():
 	for node in _get_save_nodes():
-		if node != null:
+		if node != null and node.has_method(GET_DATA_METHOD):
 			var path = String(node.get_path())
-			get_file_data().nodes_data[path] = _get_node_data(node)
+			get_file_data().nodes_data[path] = node.call(GET_DATA_METHOD)
 
 func _save_players_data():
 	var players = Globals.get_players()
 	for player in players:
-		if player.has_method("get_data"):
-			get_file_data().player_data[player.player_id] = player.get_data()
+		if player.has_method(GET_DATA_METHOD):
+			get_file_data().player_data[player.player_id] = player.call(GET_DATA_METHOD)
 
 func save_player_data(player_id: int, data: Dictionary):
 	var player_data: DataPlayer = get_player_data(player_id)
@@ -98,23 +102,6 @@ func _get_game_data():
 	var game_data := DataGame.new()
 	game_data.level = Globals.get_current_level().scene_file_path
 	return game_data
-
-func _get_node_data(node):
-	if node is CharacterEntity:
-		return _get_entity_data(node)
-	elif node is StateMachine:
-		return _get_state_data(node)
-
-func _get_entity_data(entity: CharacterEntity) -> DataEntity:
-	var data := DataEntity.new()
-	data.position = entity.global_position
-	data.facing = entity.facing
-	return data
-
-func _get_state_data(state: StateMachine) -> DataState:
-	var data := DataState.new()
-	data.state_index = state.current_state.get_index()
-	return data
 
 func _get_save_nodes():
 	var nodes: Array[Node] = get_tree().get_nodes_in_group(Const.GROUP.SAVE)

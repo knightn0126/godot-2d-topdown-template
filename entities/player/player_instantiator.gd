@@ -13,7 +13,7 @@ func _instantiate_player():
 	var player: PlayerEntity = player_scene.instantiate() as PlayerEntity
 	if player:
 		player.player_id = player_id
-		player.move_and_face(global_position)
+		player.reposition_and_face(global_position)
 		parent.add_child.call_deferred(player)
 		Globals.player_added_to_scene.emit(player)
 	queue_free()
