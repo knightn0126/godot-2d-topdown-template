@@ -32,15 +32,19 @@ func get_player_data(player_id: int):
 		return player_data[player_id]
 	return null
 
+func get_node_data(path: String):
+	var nodes_data = get_file_data().nodes_data if _file else null
+	if nodes_data and path in nodes_data:
+		return nodes_data[path]
+	return null
+
 ## Used to save nodes state data of the level and players data before removing the level.
 func save_level_data():
 	_save_nodes_data()
-	_save_players_data()
 
 ## Used to load nodes state data of the level when entering a level.
 func load_level_data():
 	_load_nodes_data()
-	_load_players_data()
 
 func load_game() -> void:
 	print("loading...")
@@ -52,7 +56,6 @@ func save_game() -> void:
 	print("saving...")
 	_save_game_data()
 	_save_nodes_data()
-	_save_players_data()
 	get_file_data().write_save_file()
 	game_saved.emit()
 
@@ -65,29 +68,23 @@ func _load_game_data():
 
 func _load_nodes_data():
 	for node: Node in _get_save_nodes():
-		var path = String(node.get_path())
-		if path not in get_file_data().nodes_data and node.has_method(GET_DATA_METHOD):
-			get_file_data().nodes_data[path] = node.call(GET_DATA_METHOD)
-		if node.has_method(RECEIVE_DATA_METHOD):
-			node.call(RECEIVE_DATA_METHOD, get_file_data().nodes_data[path])
-
-func _load_players_data():
-	var players = Globals.get_players()
-	print_debug("level_loaded %s" % [players.size()])
-	for player in players:
-		print_debug(player)
+		if node is not PlayerEntity:
+			var node_data = get_node_data(String(node.get_path()))
+			if !node_data and node.has_method(GET_DATA_METHOD):
+				node_data = node.call(GET_DATA_METHOD)
+			if node.has_method(RECEIVE_DATA_METHOD):
+				node.call(RECEIVE_DATA_METHOD, node_data)
 
 func _save_nodes_data():
-	for node in _get_save_nodes():
+	for node: Node in _get_save_nodes():
 		if node != null and node.has_method(GET_DATA_METHOD):
-			var path = String(node.get_path())
-			get_file_data().nodes_data[path] = node.call(GET_DATA_METHOD)
-
-func _save_players_data():
-	var players = Globals.get_players()
-	for player in players:
-		if player.has_method(GET_DATA_METHOD):
-			get_file_data().player_data[player.player_id] = player.call(GET_DATA_METHOD)
+			# Check if the node is a player entity. Player's data is handled differently.
+			if node is PlayerEntity:
+				var path = node.player_id
+				get_file_data().player_data[path] = node.call(GET_DATA_METHOD)
+			else:
+				var path = String(node.get_path())
+				get_file_data().nodes_data[path] = node.call(GET_DATA_METHOD)
 
 func save_player_data(player_id: int, data: Dictionary):
 	var player_data: DataPlayer = get_player_data(player_id)
