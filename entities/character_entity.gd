@@ -135,6 +135,7 @@ func move(direction):
 func jump():
 	if not is_jumping:
 		safe_position = global_position
+		health_controller.immortal = true
 		is_jumping = true
 		collision_mask ^= (1 << 2) | (1 << 1)
 		collision_layer ^= 1 << 1
@@ -142,6 +143,7 @@ func jump():
 ##To be called at the end of a jump.
 func end_jump():
 	is_jumping = false
+	health_controller.immortal = false
 	collision_mask ^= (1 << 2) | (1 << 1)
 	collision_layer ^= 1 << 1
 
