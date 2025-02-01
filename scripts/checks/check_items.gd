@@ -1,5 +1,5 @@
-extends Check
 class_name CheckItems
+extends Check
 
 @export var items: Array[ContentItem] ## Verify whether the required items are present in the entity's inventory.
 @export var remove_items := true ## Remove the items from the inventory after a successful validation.
