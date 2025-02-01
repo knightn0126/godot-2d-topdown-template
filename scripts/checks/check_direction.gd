@@ -1,5 +1,5 @@
-extends Check
 class_name CheckDirection
+extends Check
 
 @export_flags(
 	Const.DIRECTION.DOWN,
