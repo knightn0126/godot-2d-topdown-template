@@ -5,7 +5,10 @@
 A comprehensive game template designed for Godot 4, providing everything you need to kickstart your 2D top-down game development journey.
 
 ### Supported Godot Version
-[![Godot Engine](https://img.shields.io/badge/Godot_4.4+-blue?logo=godotengine&amp;logoColor=white)](https://godotengine.org)
+
+[![Godot Engine](https://img.shields.io/badge/Godot_4.4+-blue?logo=godotengine&logoColor=white)](https://godotengine.org)
+
+Godot version 4.4 or later is required, as the code utilizes [typed dictionaries](https://godotengine.org/article/dev-snapshot-godot-4-4-dev-2/#typed-dictionaries).
 
 ## 🎮 Web Demo
 
@@ -23,7 +26,7 @@ A comprehensive game template designed for Godot 4, providing everything you nee
 
 ## ⚠️ Notice
 
-I am gradually releasing more [in-depth documentation](https://alchemy-pot.web.app/godot-2d-topdown-template) on my website.
+I am gradually releasing more [in-depth documentation](https://alchemy-pot.web.app/resources/godot-2d-topdown-template) on my website.
 For sections that are already completed I will link to the updated documentation page;
 for other sections, in the meantime, I will leave the documentation here.
 
@@ -84,7 +87,7 @@ To manage the list of languages you can check the constant `LANGUAGES` in `Const
 
 ## In Conclusion...
 
-The Godot 2D Top-Down Template is one of the most comprehensive systems I have designed and developed. It is the result of my experience creating and playing various top-down action-adventure and RPG-style games. My hope is that this template helps you build something amazing and that one day, I’ll get to play your game!  
+The Godot 2D Top-Down Template is one of the most comprehensive systems I have designed and developed. It is the result of my experience creating and playing various top-down action-adventure and RPG-style games. My hope is that this template helps you build something amazing and that one day, I’ll get to play your game!
 
 The template is fully open-source, so feel free to explore the code and customize it to fit your needs. If you encounter bugs, missing features, or unclear documentation, don't hesitate to open an issue. Feature requests and contributions are also welcome, so feel free to submit them on the [GitHub repository](https://github.com/stesproject/godot-2d-topdown-template/issues).
 
@@ -92,4 +95,4 @@ Check out my [RPG Maker games](https://store.steampowered.com/search/?developer=
 
 Enjoy creating! 🚀
 
-[![Ko-Fi](https://cdn.ko-fi.com/cdn/kofi1.png?v=3)](https://ko-fi.com/stesproject)
+<a href="https://ko-fi.com/stesproject" target="_blank"><img src="https://cdn.ko-fi.com/cdn/kofi1.png?v=3" alt="Ko-Fi" width="145px"></a>
