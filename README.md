@@ -4,8 +4,8 @@
 
 A comprehensive game template designed for Godot 4, providing everything you need to kickstart your 2D top-down game development journey.
 
-[![Godot Engine](https://img.shields.io/badge/Godot-4.3%2B-brightgreen)](https://godotengine.org)
-[![GitHub](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/stesproject/godot-2d-topdown-template)
+### Supported Godot Version
+[![Godot Engine](https://img.shields.io/badge/Godot_4.4+-blue?logo=godotengine&amp;logoColor=white)](https://godotengine.org)
 
 ## 🎮 Web Demo
 
@@ -13,22 +13,22 @@ A comprehensive game template designed for Godot 4, providing everything you nee
 
 ## ⚙️ Features
 
-- Character Controller (basic movement + run, jump, attack, flash)
-- Health Controller with optional health bars
-- Interaction System
-- State Management using State Machines
-- Save/Load System
-- Inventory Management
+- **Character Controller** (basic movement + run, jump, attack, flash)
+- **Health Controller** with optional health bars
+- **Interaction System**
+- **State Management** using State Machines
+- **Save/Load System**
+- **Inventory Management**
 - ...and more!
 
 ## ⚠️ Notice
 
-I am gradually releasing more in-depth documentation on my site.
+I am gradually releasing more [in-depth documentation](https://alchemy-pot.web.app/godot-2d-topdown-template) on my website.
 For sections that are already completed I will link to the updated documentation page;
 for other sections, in the meantime, I will leave the documentation here.
 
 In general, to learn more about a specific topic, you can directly check the code. All the important properties and functions are fully documented.
-You can also try the template launching the web demo from the link above, or download and launch the project from the Godot editor (F5).
+You can also try the template launching the web demo from the link above, or download and launch the project from the Godot editor.
 When you start working on your project, you can safely delete all the scenes that start with "playground\_" and configure your starting level in the `start_level` property of the `start_screen.tscn` scene.
 
 ## [Character Controller](https://alchemy-pot.web.app/godot-2d-topdown-template/character-controller)
@@ -76,20 +76,20 @@ Debugging is managed by the Autoload `Debugger`. Check out the `debugger.gd` scr
 Localization is managed by the default localization system of Godot. The project offers two already configured languages: _English_ (en) and _Italian_ (it). Check out the `local` folder to find out all the translated strings.
 To manage the list of languages you can check the constant `LANGUAGES` in `Const.gd` and remove or add new languages there. Then, you have to create a corresponding `.translation` file in the `local` folder and add (or remove) it in _Project Settings -> Localization_.
 
-## 🤝 Contributing
-
-Contributions are welcome. Feel free to submit issues or pull requests on the [GitHub repository](https://github.com/stesproject/godot-2d-topdown-template).
-
 ## 🙏 Credits
 
 - **nathanhoad** for [Godot Dialogue Manager](https://github.com/nathanhoad/godot_dialogue_manager)
 - **baconandgames** for [Godot4 Game Template](https://github.com/baconandgames/godot4-game-template)
 - **dandeliondino** for [Tile Bit Tools](https://github.com/dandeliondino/tile_bit_tools)
 
-## 📄 License
+## In Conclusion...
 
-This template is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The Godot 2D Top-Down Template is one of the most comprehensive systems I have designed and developed. It is the result of my experience creating and playing various top-down action-adventure and RPG-style games. My hope is that this template helps you build something amazing and that one day, I’ll get to play your game!  
 
----
+The template is fully open-source, so feel free to explore the code and customize it to fit your needs. If you encounter bugs, missing features, or unclear documentation, don't hesitate to open an issue. Feature requests and contributions are also welcome, so feel free to submit them on the [GitHub repository](https://github.com/stesproject/godot-2d-topdown-template/issues).
 
-Made with ❤️ in Italy
+Check out my [RPG Maker games](https://store.steampowered.com/search/?developer=Ste%27s%20Project) that inspired the creation of this template and...
+
+Enjoy creating! 🚀
+
+[![Ko-Fi](https://cdn.ko-fi.com/cdn/kofi1.png?v=3)](https://ko-fi.com/stesproject)
