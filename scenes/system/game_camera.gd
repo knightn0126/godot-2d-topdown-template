@@ -1,9 +1,9 @@
 @tool
 extends Camera2D
-##Handle main camera movements and following a target.
+## Manages primary camera movement and dynamically follows a designated target.
 class_name GameCamera
 
-@export var target_player_id := 0: ## If greater than 0, player with the specified id will be set as target.
+@export var target_player_id := 0: ## If set to a value greater than 0, the player with the specified ID will be assigned as the target.
 	set(value):
 		target_player_id = value
 		target = null

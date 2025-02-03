@@ -39,7 +39,7 @@ Take full control of your characters: make them move, run, attack, jump, and fla
 
 Enable your characters to interact with the game world. Trigger actions such as opening a chest, activating switches, or unlocking doors using the flexible interaction system.
 
-## Inventory
+## [Inventory System](https://alchemy-pot.web.app/godot-2d-topdown-template/inventory-system)
 
 The inventory manages all the items owned by a player. The project provides a simple node (`Inventory.tscn`) assigned as a child of the player, which shows all the items owned by him. You can delete this inventory and create your own according to your preferences. Press _ESC_ on your keyboard to open/close the inventory.
 
@@ -63,9 +63,9 @@ User preferences (like music settings or language) are also managed by scripts f
 
 Dialogues are managed by the plugin `DialogueManager` (version 3.0) from [nathanhoad](https://github.com/nathanhoad). For more information check out the [official repository](https://github.com/nathanhoad/godot_dialogue_manager).
 
-## Tilemaps
+## [Tilemaps and Levels](https://alchemy-pot.web.app/godot-2d-topdown-template/tilemaps-and-levels)
 
-To easily manage TileMap terrains, the plugin `TileBitTools` from [dandeliondino](https://github.com/dandeliondino) has been added to the project. To find out how to set up Terrains, check out the [official repository](https://github.com/dandeliondino/tile_bit_tools).
+If you plan to use Tilemaps and the pre-built Level scene to build your levels, here you can discover some useful tips to create new levels and setting up autotiles in no time.
 
 ## Debugger
 
@@ -76,54 +76,6 @@ Debugging is managed by the Autoload `Debugger`. Check out the `debugger.gd` scr
 Localization is managed by the default localization system of Godot. The project offers two already configured languages: _English_ (en) and _Italian_ (it). Check out the `local` folder to find out all the translated strings.
 To manage the list of languages you can check the constant `LANGUAGES` in `Const.gd` and remove or add new languages there. Then, you have to create a corresponding `.translation` file in the `local` folder and add (or remove) it in _Project Settings -> Localization_.
 
-## Levels
-
-A level is a game area where playable characters, NPCs, any enemies, and props are present. The base node for levels is `Level.tscn`, which has attached the script `level.gd`. The Level node can be used as a starting node for creating new levels. It already has a structure of nodes within it, making it fully functional. Exploring the present nodes, we find:
-
-- GameCamera2D
-- Layers
-- Props
-- Entities
-- Transfers
-- Events
-
-#### GameCamera2D
-
-The main `GameCamera2D` of the level. It has the script `game_camera.gd` attached, useful to define a camera's target to follow:
-
-- `target_player_id`: you can set a value corresponding to the `player_id` of the player to follow (see PlayerEntity). Setting a value greater than 0 will search within the level for the player with the corresponding `player_id`. Setting the value to 0 will not search for any player, and only the `target` field will be checked.
-- `target`: if you want the camera to follow any node (that is not a player), you can assign the node to follow in this field.
-
-#### Layers
-
-This is the parent node that hosts all the `TileMapLayer` nodes of the level. `TileMapLayer` nodes are used to draw a level using tiles.
-Regarding the tileset, to facilitate the definition of Terrain Sets, the `TileBitTools` plugin has been added. For information on how TileBitTools works, refer to its [repository](https://github.com/dandeliondino/tile_bit_tools).
-
-#### Props
-
-You can use this node as a parent to keep the props you add to the level. Props can be interactive elements or simple non-interactive decorations in the level.
-
-#### Entities
-
-You can use this node as a parent to keep the entities you add to the level. Entities are the game’s characters.
-Here you can add `Marker2D` nodes with a `player_instantiator.gd` script to indicate the spawn position of each player. The `player_instantiator.gd` script will handle instantiating a player at the `Marker2D` position with the defined `player_id`.
-
-#### Transfers
-
-You can use this node as a parent to keep the transfers you add to the level. A Transfer allows the player to move from one level to another. Check the `transfer.gd` script to learn more.
-
-#### Events
-
-You can use this node as a parent to keep the events you add to the level. Events are state machines that trigger a sequence of states, useful for creating cutscenes or automated character movements.
-
-### Transfer
-
-Parent node that contains the script `transfer.gd` that performs the transfer, with the following parameters:
-
-- `level_path`: the path of the level to transfer to. Leave empty if you want to move within the same level
-- `destination_name`: the name of the node to use as a reference to set the destination position. This node should have assigned the "destination" group to work properly
-- `facing`: changes the facing direction of the player, forcing it to face the direction configured here. Useful if the starting Transfer is East, so the player is facing right when interacting with it, but the destination is North, so the player will need to face down upon arriving.
-
 ## 🤝 Contributing
 
 Contributions are welcome. Feel free to submit issues or pull requests on the [GitHub repository](https://github.com/stesproject/godot-2d-topdown-template).
@@ -132,7 +84,7 @@ Contributions are welcome. Feel free to submit issues or pull requests on the [G
 
 - **nathanhoad** for [Godot Dialogue Manager](https://github.com/nathanhoad/godot_dialogue_manager)
 - **baconandgames** for [Godot4 Game Template](https://github.com/baconandgames/godot4-game-template)
-- **dandeliondino** for [Tile Bit Tools](https://github.com/dandeliondino/tile_bit_tools) 
+- **dandeliondino** for [Tile Bit Tools](https://github.com/dandeliondino/tile_bit_tools)
 
 ## 📄 License
 

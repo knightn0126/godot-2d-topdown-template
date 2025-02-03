@@ -47,7 +47,7 @@ func add_item(item: DataItem, quantity: int):
 		items.append(content)
 		print("%s added to %s's inventory! q: %s" % [item.resource_name, self.name, quantity])
 
-##Removes an item from the inventory, if the item already exists in inventory.
+##Removes an item from the inventory, if the item is present in inventory.
 func remove_item(item_name: String, quantity: int):
 	var item_index = is_item_in_inventory(item_name)
 	if item_index >= 0:
