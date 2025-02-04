@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://b0b0jp36dubff" path="res://scenes/levels/Level.tscn" id="1_qlgf7"]
 [ext_resource type="PackedScene" uid="uid://dvci1ecg1e7l" path="res://scenes/props/switch.tscn" id="2_wtq1x"]
-[ext_resource type="PackedScene" path="res://scenes/props/gate_side_up.tscn" id="3_eiofu"]
+[ext_resource type="PackedScene" uid="uid://cbl0vbjiosfi0" path="res://scenes/props/gate_side_up.tscn" id="3_eiofu"]
 [ext_resource type="Script" uid="uid://ccgjxk0s51hvy" path="res://scripts/state_machine/change_state_listener.gd" id="4_0mcwu"]
 [ext_resource type="PackedScene" uid="uid://vju64cd63eqd" path="res://scenes/props/trap.tscn" id="5_xydwj"]
 [ext_resource type="PackedScene" uid="uid://r3iqi7bb4jyw" path="res://scenes/props/potion.tscn" id="6_hwx4o"]
-[ext_resource type="PackedScene" uid="uid://bybfkbp6hi8r0" path="res://scenes/system/transfer.tscn" id="7_w2oln"]
+[ext_resource type="PackedScene" uid="uid://bybfkbp6hi8r0" path="res://components/transfer.tscn" id="7_w2oln"]
 [ext_resource type="Script" uid="uid://dgeu5dy2dlgxo" path="res://scripts/checks/check.gd" id="8_anikj"]
 [ext_resource type="Script" uid="uid://cwdbt1w4qmrrg" path="res://scripts/checks/check_direction.gd" id="9_ja7so"]
 

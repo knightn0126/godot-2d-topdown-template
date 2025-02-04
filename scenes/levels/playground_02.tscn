@@ -20,7 +20,7 @@
 [ext_resource type="Resource" uid="uid://dxiki22ipskft" path="res://dialogues/commons.dialogue" id="10_q52oa"]
 [ext_resource type="Script" uid="uid://cwq4nm0vsv1l5" path="res://scripts/state_machine/states/state_dialogue.gd" id="11_yfo47"]
 [ext_resource type="Resource" uid="uid://cfhugiau0dt13" path="res://dialogues/start.dialogue" id="12_k1igu"]
-[ext_resource type="PackedScene" uid="uid://bybfkbp6hi8r0" path="res://scenes/system/transfer.tscn" id="13_q0u2y"]
+[ext_resource type="PackedScene" uid="uid://bybfkbp6hi8r0" path="res://components/transfer.tscn" id="13_q0u2y"]
 [ext_resource type="PackedScene" uid="uid://2c84y1k62jlc" path="res://entities/enemies/enemy.tscn" id="13_wnv1r"]
 [ext_resource type="Script" uid="uid://ddifg1cabao3g" path="res://scripts/state_machine/states/state_idle.gd" id="15_cgx8t"]
 [ext_resource type="Script" uid="uid://dd2m5xedjwd4m" path="res://scripts/state_machine/states/state_callable.gd" id="15_yfo47"]
