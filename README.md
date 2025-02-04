@@ -54,9 +54,9 @@ Easily save and load game progress, including player data, entity positions, and
 
 State machines form the backbone of this template, controlling characters, NPCs, enemies, objects, and more. Each state focuses on a single behavior, allowing you to decide when and how states are activated.
 
-## Scenes Transition
+## [Scenes Transition](https://alchemy-pot.web.app/godot-2d-topdown-template/scenes-transition)
 
-Transition between scenes is managed by `SceneManager.gd` from [baconandgames](https://github.com/baconandgames). For more information check out the [official repository](https://github.com/baconandgames/godot4-game-template).
+Seamlessly move between scenes, whether transitioning from a title screen to a level or from one level to another, and customize the transition effects to match your game's aesthetic.
 
 ## User Prefs
 
