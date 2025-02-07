@@ -43,7 +43,7 @@ func disable(): ## Disables this state.
 		state_machine.disable_state(self)
 
 func enter():
-	enable()
+	pass
 
 func exit():
 	pass

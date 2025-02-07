@@ -62,9 +62,9 @@ Seamlessly move between scenes, whether transitioning from a title screen to a l
 
 User preferences (like music settings or language) are also managed by scripts from [baconandgames](https://github.com/baconandgames). For more information check out the [Godot 4 Game Template](https://github.com/baconandgames/godot4-game-template). In the project, you can access them through the `SettingsMenu` (`settings_menu.gd`).
 
-## Dialogue System
+## [Dialogue System](https://alchemy-pot.web.app/godot-2d-topdown-template/dialogue-system)
 
-Dialogues are managed by the plugin `DialogueManager` (version 3.0) from [nathanhoad](https://github.com/nathanhoad). For more information check out the [official repository](https://github.com/nathanhoad/godot_dialogue_manager).
+Integrate a robust dialogue system to display message boxes and manage dialogues between game characters, enhancing narrative depth and player engagement.
 
 ## [Tilemaps and Levels](https://alchemy-pot.web.app/godot-2d-topdown-template/tilemaps-and-levels)
 

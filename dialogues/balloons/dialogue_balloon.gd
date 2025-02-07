@@ -5,6 +5,6 @@ extends DialogueManagerExampleBalloon
 @onready var name_container: Panel = $Balloon/NameContainer
 
 ## Apply any changes to the balloon given a new [DialogueLine].
-func apply_dialogue_line(next_dialogue_line: DialogueLine) -> void:
-	super.apply_dialogue_line(next_dialogue_line)
+func apply_dialogue_line() -> void:
+	super.apply_dialogue_line()
 	name_container.visible = not dialogue_line.character.is_empty()
