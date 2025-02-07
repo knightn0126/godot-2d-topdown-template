@@ -8,6 +8,7 @@ class_name CharacterEntity
 @export var sync_rotation: Array[Node2D] ## A list of nodes that update their rotation based on the direction the entity is facing.
 @export var health_controller: HealthController ## The HealthController that handles this entity hp.
 @export var inventory: Inventory = null ## The inventory of the entity.
+@export var initial_facing: Vector2 = Vector2.DOWN
 @export_group("Movement")
 @export var max_speed = 300.0 ## The maximum speed the entity can reach while moving.
 @export var friction = 2000.0 ## Affects the time it takes for the entity to reach max_speed or to stop.
@@ -32,9 +33,11 @@ var screen_notifier: VisibleOnScreenNotifier2D ## The instance of a VisibleOnScr
 var attack_cooldown_timer: Timer ## The timer that manages the cooldown time between attacks.
 var facing := Vector2.DOWN: ## The direction the entity is facing.
 	set(value):
-		facing = value
-		for n in sync_rotation:
-			n.rotation = facing.angle()
+		if value != facing:
+			direction_changed.emit(value)
+			facing = value
+			for n in sync_rotation:
+				n.rotation = facing.angle()
 var speed := 0.0 ## The current speed of the entity.
 var invert_moving_direction := false ## Inverts the movement direction. Useful for moving an entity away from the target position.
 var safe_position := Vector2.ZERO ## The last position of the entity that was deemed safe. It is set before a jump and is eventually reassigned to the entity by calling the return_to_safe_position method.
@@ -56,12 +59,14 @@ var is_blocked := false: ## True when blocks_detector is colliding.
 var is_falling := false ## Set to true when the entity enters the on_fall state, false when it leaves it.
 
 signal hit ## Emitted when this entity hits something when attacks.
+signal direction_changed(direction: Vector2)
 
 func _ready():
 	_init_screen_notifier()
 	_init_attack_cooldown_timer()
 	animation_tree.active = true
 	hit.connect(func(): if on_hit: enable_state(on_hit))
+	facing = initial_facing
 
 func _process(_delta):
 	_update_animation()
