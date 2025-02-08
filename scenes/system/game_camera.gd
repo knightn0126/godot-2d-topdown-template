@@ -1,9 +1,9 @@
 @tool
 extends Camera2D
-## Manages primary camera movement and dynamically follows a designated target.
+## Handle main camera movement and target following.  
 class_name GameCamera
 
-@export var target_player_id := 0: ## If set to a value greater than 0, the player with the specified ID will be assigned as the target.
+@export var target_player_id := 0: ## If set to a value greater than 0, the player with the specified ID will be assigned as the camera target.
 	set(value):
 		target_player_id = value
 		target = null
@@ -17,28 +17,35 @@ class_name GameCamera
 			target_set.emit()
 
 signal target_set
+signal target_reached
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		set_physics_process(false)
 		return
 	_enable_smoothing(false)
 	Globals.player_added_to_scene.connect(_try_to_set_player_target)
-	target_set.connect(_init_camera)
+	target_reached.connect(_init_camera)
+
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	if _is_target_reached():
+		target_reached.emit()
 
 func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	_follow_target()
 
-##internal - If player is moving between levels, camera will be enabled on transfer complete.
+##internal - When transitioning between levels, the camera will be activated upon completing the transfer.
 func _init_camera():
-	_follow_target()
 	_enable_smoothing(true)
 
 func _enable_smoothing(value):
 	# limit_smoothed = value #BUG: it causes issues.
 	position_smoothing_enabled = value
 
-##internal - Linked to the global signal player_added_to_scene, it will be called when a new player is added to the level.
+##internal - This is linked to the global signal `player_added_to_scene` and is triggered when a new player joins the level.
 func _try_to_set_player_target(_player: PlayerEntity):
 	if not target and target_player_id > 0:
 		var player: PlayerEntity = _player if _player.player_id == target_player_id else null
@@ -46,10 +53,13 @@ func _try_to_set_player_target(_player: PlayerEntity):
 			await player.ready
 			target = player
 		
-##internal - The method responsible for managing target following.
+##internal - Manages camera tracking of the assigned target.
 func _follow_target():
 	if is_instance_valid(target):
 		global_position = target.position
+
+func _is_target_reached():
+	return global_position.is_equal_approx(target.position)
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name == "target":
