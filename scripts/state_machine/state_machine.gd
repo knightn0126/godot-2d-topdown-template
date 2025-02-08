@@ -1,17 +1,18 @@
 @tool
 @icon("./icons/StateMachine.svg")
 extends Node
-##Main controller for the states. States should be placed as children of a StateMachine node.
+## The primary controller for managing states. States should be added as child nodes of the StateMachine.
 class_name StateMachine
 
 @export_category("Config")
-@export var current_state: State = null: ##The currenlty active state. You can also set here the initial state of the StateMachine.
+@export var current_state: State = null: ## The currently active state. You can also define the initial state of the StateMachine here.
 	set(value):
 		current_state = value
 		current_state_name = current_state.name if current_state else StringName()
 		update_configuration_warnings()
-@export var disabled := false ## Determines if disable this StateMachine
-@export var debug := false ## Prints to the console when state changes
+@export var start_delay := 0.0 ## Initiate the StateMachine after a brief delay.
+@export var disabled := false ## Controls whether to disable this StateMachine.
+@export var debug := false ## Logs state changes to the terminal.
 
 @onready var n_of_states = get_child_count()
 
@@ -31,6 +32,8 @@ func _ready():
 		set_physics_process(false)
 		return
 	await owner.ready
+	if start_delay > 0:
+		await get_tree().create_timer(start_delay).timeout
 	_init_states()
 	_get_states()
 	_enter_states()
