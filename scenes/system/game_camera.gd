@@ -10,11 +10,15 @@ class_name GameCamera
 		notify_property_list_changed()
 @export var target: Node2D = null: ## The node to follow.
 	set(value):
-		target = value
-		notify_property_list_changed()
-		if is_node_ready() and target:
-			print("%s target set to: %s" % [name, target])
-			target_set.emit()
+		if value != target:
+			target = value
+			notify_property_list_changed()
+			if is_node_ready() and target:
+				print("%s target set to: %s" % [name, target])
+				target_set.emit()
+				check_target = true
+
+var check_target := false
 
 signal target_set
 signal target_reached
@@ -29,8 +33,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	if _is_target_reached():
+	if check_target and _is_target_reached():
 		target_reached.emit()
+		check_target = false
 
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint():
