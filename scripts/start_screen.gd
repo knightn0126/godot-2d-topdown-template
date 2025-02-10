@@ -6,6 +6,7 @@ var user_prefs: UserPrefs
 
 @onready var newgame_button: Button = %NewGame
 @onready var continue_button: Button = %Continue
+@onready var quit_button: Button = %Quit
 @onready var version_num: Label = %VersionNum
 
 func _ready() -> void:
@@ -14,6 +15,7 @@ func _ready() -> void:
 	user_prefs = UserPrefs.load_or_create()
 	_check_continue()
 	TranslationServer.set_locale(user_prefs.language)
+	quit_button.visible = OS.get_name() != "Web"
 
 func _check_continue():
 	if SaveFileManager.save_file_exists():
