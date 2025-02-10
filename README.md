@@ -24,15 +24,13 @@ Godot version 4.4 or later is required, as the code utilizes [typed dictionaries
 - **Inventory Management**
 - ...and more!
 
-## ⚠️ Notice
+# 📄 Docs
 
-I am gradually releasing more [in-depth documentation](https://alchemy-pot.web.app/resources/godot-2d-topdown-template) on my website.
-For sections that are already completed I will link to the updated documentation page;
-for other sections, in the meantime, I will leave the documentation here.
+Read the [documentation](https://alchemy-pot.web.app/resources/godot-2d-topdown-template).
 
-In general, to learn more about a specific topic, you can directly check the code. All the important properties and functions are fully documented.
-You can also try the template launching the web demo from the link above, or download and launch the project from the Godot editor.
-When you start working on your project, you can safely delete all the scenes that start with "playground\_" and configure your starting level in the `start_level` property of the `start_screen.tscn` scene.
+To explore a specific topic in more detail, you can refer directly to the code—**all key properties and functions are fully documented**.  
+
+When starting your own project, you can safely remove all scenes that begin with **"playground_"**, as they are only meant for demonstration purposes. Then, set your desired starting level by configuring the **`start_level`** property in the `start_screen.tscn` scene.
 
 ## [Character Controller](https://alchemy-pot.web.app/godot-2d-topdown-template/character-controller)
 
@@ -58,9 +56,9 @@ State machines form the backbone of this template, controlling characters, NPCs,
 
 Seamlessly move between scenes, whether transitioning from a title screen to a level or from one level to another, and customize the transition effects to match your game's aesthetic.
 
-## User Prefs
+## [User Prefs and Localization](https://alchemy-pot.web.app/godot-2d-topdown-template/user-prefs-and-localization)
 
-User preferences (like music settings or language) are also managed by scripts from [baconandgames](https://github.com/baconandgames). For more information check out the [Godot 4 Game Template](https://github.com/baconandgames/godot4-game-template). In the project, you can access them through the `SettingsMenu` (`settings_menu.gd`).
+Save and load user preferences, such as music and sound effect volumes or selected language. Effortlessly implement multi-language support and game localization.
 
 ## [Dialogue System](https://alchemy-pot.web.app/godot-2d-topdown-template/dialogue-system)
 
@@ -70,14 +68,9 @@ Integrate a robust dialogue system to display message boxes and manage dialogues
 
 If you plan to use Tilemaps and the pre-built Level scene to build your levels, here you can discover some useful tips to create new levels and setting up autotiles in no time.
 
-## Debugger
+## [Debugger](https://alchemy-pot.web.app/godot-2d-topdown-template/debugger)
 
-Debugging is managed by the Autoload `Debugger`. Check out the `debugger.gd` script to find out what offers and add your debugging methods.
-
-## Localization
-
-Localization is managed by the default localization system of Godot. The project offers two already configured languages: _English_ (en) and _Italian_ (it). Check out the `local` folder to find out all the translated strings.
-To manage the list of languages you can check the constant `LANGUAGES` in `Const.gd` and remove or add new languages there. Then, you have to create a corresponding `.translation` file in the `local` folder and add (or remove) it in _Project Settings -> Localization_.
+Simplify testing with a configurable debugger. Test features like saving sessions, toggling player collisions, restoring health, or blocking enemies. The debugger is extendable, so you can add custom functionalities as needed.
 
 ## 🙏 Credits
 
@@ -91,7 +84,7 @@ The Godot 2D Top-Down Template is one of the most comprehensive systems I have d
 
 The template is fully open-source, so feel free to explore the code and customize it to fit your needs. If you encounter bugs, missing features, or unclear documentation, don't hesitate to open an issue. Feature requests and contributions are also welcome, so feel free to submit them on the [GitHub repository](https://github.com/stesproject/godot-2d-topdown-template/issues).
 
-Check out my [RPG Maker games](https://store.steampowered.com/search/?developer=Ste%27s%20Project) that inspired the creation of this template and...
+Check out my [RPG Maker games](https://store.steampowered.com/search/?developer=Ste%27s%20Project) that inspired the creation of this template!
 
 Enjoy creating! 🚀
 
