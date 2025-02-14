@@ -1,4 +1,6 @@
 @tool
+@icon("res://icons/TargetManager.svg")
+
 ## Manages target selection and tracking for a node.
 class_name TargetManager
 extends Node2D
