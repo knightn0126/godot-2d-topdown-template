@@ -8,12 +8,7 @@ class_name Transfer
 @export_category("Destination settings")
 ## Force the player to face this direction upon arriving to this destination. [br]
 ## Leave empty to keep the same facing direction.
-@export_enum(
-	Const.DIRECTION.DOWN,
-	Const.DIRECTION.LEFT,
-	Const.DIRECTION.RIGHT,
-	Const.DIRECTION.UP
-) var facing
+@export var direction: Direction
 
 func _ready() -> void:
 	SceneManager.load_start.connect(func(_loading_screen): Globals.transfer_start.emit())
@@ -49,7 +44,9 @@ func _transfer_to_position(entity):
 	Globals.transfer_start.emit()
 	var destination = Globals.get_destination(destination_name)
 	if destination:
-		entity.reposition_and_face(destination.position, destination.facing)
+		entity.global_position = destination.global_position
+		if destination is Transfer and destination.direction:
+			entity.facing = destination.direction.to_vector
 	else:
 		push_warning("%s: destination %s not found!" % [get_path(), destination])
 	await get_tree().create_timer(0.5).timeout

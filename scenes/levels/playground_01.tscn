@@ -99,7 +99,6 @@ conditions = Array[ExtResource("8_anikj")]([SubResource("Resource_phe5r")])
 position = Vector2(672, 240)
 level_path = "uid://stlloemylyy0"
 destination_name = "Transfer_West"
-facing = 1
 
 [editable path="Props/Potion"]
 [editable path="Transfers/Transfer_01"]

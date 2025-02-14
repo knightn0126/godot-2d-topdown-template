@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cpbp3ry6upm5f"]
+[gd_scene load_steps=12 format=4 uid="uid://cpbp3ry6upm5f"]
 
 [ext_resource type="PackedScene" uid="uid://b0b0jp36dubff" path="res://scenes/levels/Level.tscn" id="1_1wluo"]
 [ext_resource type="PackedScene" uid="uid://dg314c7dkjyup" path="res://scenes/props/key.tscn" id="2_hv67p"]
@@ -8,9 +8,15 @@
 [ext_resource type="Script" uid="uid://bgm8n3pwwbymt" path="res://scripts/interaction_area.gd" id="5_yy2wo"]
 [ext_resource type="Script" uid="uid://cmc5vhgmy6nat" path="res://scripts/state_machine/states/state_interact.gd" id="7_akxd2"]
 [ext_resource type="PackedScene" uid="uid://vju64cd63eqd" path="res://scenes/props/trap.tscn" id="7_ygy3h"]
+[ext_resource type="Script" uid="uid://qawe0cujhuns" path="res://scripts/Direction.gd" id="9_6gsca"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4uq14"]
 radius = 32.0
+
+[sub_resource type="Resource" id="Resource_a50h6"]
+script = ExtResource("9_6gsca")
+direction = 3
+metadata/_custom_type_script = ExtResource("9_6gsca")
 
 [node name="Playground_03" instance=ExtResource("1_1wluo")]
 
@@ -92,6 +98,6 @@ position = Vector2(224, 304)
 position = Vector2(224, 352)
 level_path = "uid://stlloemylyy0"
 destination_name = "Transfer_North"
-facing = 3
+direction = SubResource("Resource_a50h6")
 
 [editable path="Props/Gate_Front"]

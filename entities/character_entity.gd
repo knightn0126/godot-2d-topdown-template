@@ -1,14 +1,15 @@
-extends CharacterBody2D
-class_name CharacterEntity
 ##Script attached to the Entity node, which represents all the characters entities of the game.
 ##The Entity node is used as a base to create players, enemies and any other npc.
+class_name CharacterEntity
+extends CharacterBody2D
 
 @export_group("Settings")
 @export var animation_tree: AnimationTree ## The AnimationTree attached to this entity, needed to manage animations.
 @export var sync_rotation: Array[Node2D] ## A list of nodes that update their rotation based on the direction the entity is facing.
 @export var health_controller: HealthController ## The HealthController that handles this entity hp.
 @export var inventory: Inventory = null ## The inventory of the entity.
-@export var initial_facing: Vector2 = Vector2.DOWN
+## The initial direction the entity will face when spawned.  
+@export var initial_facing: Direction
 @export_group("Movement")
 @export var max_speed = 300.0 ## The maximum speed the entity can reach while moving.
 @export var friction = 2000.0 ## Affects the time it takes for the entity to reach max_speed or to stop.
@@ -33,11 +34,12 @@ var screen_notifier: VisibleOnScreenNotifier2D ## The instance of a VisibleOnScr
 var attack_cooldown_timer: Timer ## The timer that manages the cooldown time between attacks.
 var facing := Vector2.DOWN: ## The direction the entity is facing.
 	set(value):
-		if value != facing:
+		if value != facing and value != Vector2.ZERO:
 			direction_changed.emit(value)
-			facing = value
+			facing = value.normalized()
 			for n in sync_rotation:
 				n.rotation = facing.angle()
+var update_facing_with_movement := true
 var speed := 0.0 ## The current speed of the entity.
 var invert_moving_direction := false ## Inverts the movement direction. Useful for moving an entity away from the target position.
 var safe_position := Vector2.ZERO ## The last position of the entity that was deemed safe. It is set before a jump and is eventually reassigned to the entity by calling the return_to_safe_position method.
@@ -78,7 +80,8 @@ func _ready():
 	_init_attack_cooldown_timer()
 	animation_tree.active = true
 	hit.connect(func(): if on_hit: enable_state(on_hit))
-	facing = initial_facing
+	if initial_facing:
+		facing = initial_facing.to_vector
 
 func _process(_delta):
 	_update_animation()
@@ -131,22 +134,29 @@ func get_data():
 	data.facing = facing
 	return data
 
-##Moves the entity towards a position, with the possibility to modify speed and friction.
-func move_towards(_position):
-	var moving_direction = global_position.direction_to(_position)
-	move(moving_direction)
+## Updates the facing direction to point towards a given position.  
+## @param _position The target position to face.
+func face_towards(_position):
+	var direction = global_position.direction_to(_position)
+	facing = direction
 
-##Handles entity movement, applying the right velocity to the body.
-func move(direction):
+## Moves the entity towards a position, with the possibility to modify speed and friction.
+func move_towards(_position):
+	var direction = global_position.direction_to(_position)
+	move(direction)
+
+## Handles entity movement, applying the right velocity to the body.
+func move(direction: Vector2):
 	if is_attacking or is_charging:
 		return
 	var delta = get_process_delta_time()
 	var target_velocity = Vector2.ZERO
-	var moving_direction := Vector2(direction.x, direction.y).normalized()
+	var moving_direction := direction.normalized()
 	var new_friction = friction
 	moving_direction *= 1 if not invert_moving_direction else -1
 	if moving_direction != Vector2.ZERO:
-		facing = moving_direction
+		if update_facing_with_movement:
+			facing = moving_direction
 		speed = max_speed * speed_multiplier
 		new_friction = friction * friction_multiplier
 		target_velocity = moving_direction * speed
@@ -201,14 +211,6 @@ func add_impulse(force := 0.0):
 func return_to_safe_position():
 	if safe_position != Vector2.ZERO:
 		global_position = safe_position
-
-##Place the entity to a different position facing towards a specific direction.
-func reposition_and_face(destination, direction = Vector2.ZERO):
-	position = destination
-	if direction is Vector2 and direction != Vector2.ZERO:
-		facing = direction
-	elif direction:
-		facing = Const.DIR_VECTOR[direction]
 
 func enable_state(state: State):
 	if health_controller.hp > 0:

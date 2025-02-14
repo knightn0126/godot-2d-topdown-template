@@ -1,9 +1,10 @@
-[gd_scene load_steps=67 format=3 uid="uid://dfxvfxqwdnh48"]
+[gd_scene load_steps=69 format=3 uid="uid://dfxvfxqwdnh48"]
 
 [ext_resource type="PackedScene" uid="uid://d2nwo602rnihe" path="res://entities/entity.tscn" id="1_fnaeb"]
 [ext_resource type="PackedScene" uid="uid://ry5d5tfsku2i" path="res://scenes/hud/player_hud.tscn" id="2_kl4cw"]
 [ext_resource type="Script" uid="uid://ngyk1y3ddxjb" path="res://entities/player/player_entity.gd" id="2_x37y0"]
 [ext_resource type="Script" uid="uid://dp66ice2hhj8n" path="res://scripts/state_machine/state_machine.gd" id="3_xnu42"]
+[ext_resource type="Script" uid="uid://qawe0cujhuns" path="res://scripts/Direction.gd" id="3_yqrof"]
 [ext_resource type="Shader" uid="uid://blugt5j7e8tag" path="res://shaders/flash.gdshader" id="4_8hp4k"]
 [ext_resource type="Script" uid="uid://b3ctbvwsexswi" path="res://scripts/state_machine/states/state_input_listener.gd" id="4_b1v48"]
 [ext_resource type="Script" uid="uid://igey4j36or78" path="res://components/health_controller.gd" id="5_gx6sm"]
@@ -15,6 +16,11 @@
 [ext_resource type="Script" uid="uid://b4jgftt0t4d1e" path="res://scripts/state_machine/states/state_impulse.gd" id="12_m3ydn"]
 [ext_resource type="Script" uid="uid://dd2m5xedjwd4m" path="res://scripts/state_machine/states/state_callable.gd" id="14_gx6sm"]
 [ext_resource type="PackedScene" uid="uid://05uhe60taf6a" path="res://components/inventory.tscn" id="15_gx6sm"]
+
+[sub_resource type="Resource" id="Resource_3wlsy"]
+script = ExtResource("3_yqrof")
+direction = 2
+metadata/_custom_type_script = ExtResource("3_yqrof")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1npff"]
 radius = 23.0
@@ -472,7 +478,7 @@ on_transfer_start = NodePath("StateMachine/auto")
 on_transfer_end = NodePath("StateMachine/move")
 health_controller = NodePath("HealthController")
 inventory = NodePath("Inventory")
-initial_facing = Vector2(1, 0)
+initial_facing = SubResource("Resource_3wlsy")
 running_particles = NodePath("SmokeParticles")
 on_attack = NodePath("StateMachine/attack")
 on_fall = NodePath("StateMachine/fall")

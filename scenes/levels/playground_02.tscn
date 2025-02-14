@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://stlloemylyy0"]
+[gd_scene load_steps=95 format=4 uid="uid://stlloemylyy0"]
 
 [ext_resource type="PackedScene" uid="uid://b0b0jp36dubff" path="res://scenes/levels/Level.tscn" id="1_1jysu"]
 [ext_resource type="PackedScene" uid="uid://r3iqi7bb4jyw" path="res://scenes/props/potion.tscn" id="2_h8st3"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://ckva818l0y2ht" path="res://scripts/state_machine/states/state_path.gd" id="17_k1igu"]
 [ext_resource type="Script" uid="uid://blcymmqc06vw2" path="res://scripts/state_machine/states/state_navigation.gd" id="18_cgx8t"]
 [ext_resource type="Script" uid="uid://c6r5xohr5314y" path="res://scenes/system/target_manager.gd" id="27_dln11"]
+[ext_resource type="Script" uid="uid://qawe0cujhuns" path="res://scripts/Direction.gd" id="29_dddes"]
 
 [sub_resource type="Resource" id="Resource_iu1m7"]
 script = ExtResource("4_dln11")
@@ -535,6 +536,11 @@ radius = 172.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_dln11"]
 radius = 24.0
 
+[sub_resource type="Resource" id="Resource_nowak"]
+script = ExtResource("29_dddes")
+direction = 0
+metadata/_custom_type_script = ExtResource("29_dddes")
+
 [sub_resource type="Curve2D" id="Curve2D_dddes"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 320, 128, 0, 0, 0, 0, 800, 128, 0, 0, 0, 0, 800, 384, 0, 0, 0, 0, 320, 384)
@@ -609,7 +615,7 @@ on_completion = [NodePath("../closed")]
 metadata/_custom_type_script = ExtResource("11_yfo47")
 
 [node name="P1" parent="Entities" index="0"]
-position = Vector2(66, 308)
+position = Vector2(-32, 192)
 
 [node name="NPC" parent="Entities" index="1" instance=ExtResource("2_tk081")]
 position = Vector2(64, 120)
@@ -789,13 +795,13 @@ position = Vector2(-80, 192)
 rotation = 1.5708
 level_path = "uid://b70sj1xr15rx7"
 destination_name = "Transfer_East"
-facing = 2
 
 [node name="Transfer_North" parent="Transfers" index="1" instance=ExtResource("13_q0u2y")]
 z_index = 1
 position = Vector2(1296, 8)
 level_path = "uid://cpbp3ry6upm5f"
 destination_name = "Transfer_South"
+direction = SubResource("Resource_nowak")
 
 [node name="enemy_path" type="Path2D" parent="Events" index="0"]
 position = Vector2(0, 24)

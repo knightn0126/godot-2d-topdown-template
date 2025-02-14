@@ -1,7 +1,7 @@
-extends CharacterEntity
-class_name PlayerEntity
 ## This script is attached to the Player node and is specifically designed to represent player entities in the game.
 ## The Player node serves as the foundation for creating main playable characters.
+class_name PlayerEntity
+extends CharacterEntity
 
 @export_group("States")
 @export var on_transfer_start: State ## State to enable when player starts transfering.
@@ -51,8 +51,8 @@ func _move_to_destination(destination_path: String):
 	if !destination:
 		return
 	var direction = facing
-	if destination is Transfer and destination.facing:
-		direction = Const.DIR_VECTOR[destination.facing]
+	if destination is Transfer and destination.direction:
+		direction = destination.direction.to_vector
 	DataManager.save_player_data(player_id, {
 		position = destination.global_position,
 		facing = direction
