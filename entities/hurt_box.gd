@@ -17,3 +17,6 @@ func _on_hitbox_entered(hitbox: HitBox):
 	if !hitbox or !health_controller:
 		return
 	health_controller.change_hp(hitbox.change_hp, hitbox.owner.name)
+
+func _on_entity_action_performed(action: String) -> void:
+	process_mode = PROCESS_MODE_DISABLED if action == "jump" else PROCESS_MODE_INHERIT

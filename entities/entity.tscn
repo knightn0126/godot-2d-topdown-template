@@ -573,3 +573,5 @@ position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_528vq")
 disabled = true
 debug_color = Color(0.470614, 0.553729, 0.568295, 0.42)
+
+[connection signal="action_performed" from="." to="HurtBox" method="_on_entity_action_performed"]

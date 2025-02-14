@@ -49,8 +49,16 @@ var is_moving: bool: ## True if velocity is non-zero.
 var is_running: bool: ## Ttrue if the entity is moving and speed > max_speed.
 	get():
 		return is_moving and speed > max_speed
-var is_jumping: bool ## True during a jump. It is handled by the jump() and end_jump() methods, called by the "jump" animation.
-var is_attacking: bool ## Set to true when the entity enters the on_attack state, false when it leaves it.
+## True during a jump. It is handled by the jump() and end_jump() methods, called by the "jump" animation.
+var is_jumping: bool:
+	set(value):
+		is_jumping = value
+		_emit_action("jump", value)
+## Set to true when the entity enters the on_attack state, false when it leaves it.
+var is_attacking: bool:
+	set(value):
+		is_attacking = value
+		_emit_action("attack", value)
 var is_charging := false ## Set to true when the entity is charging an attack.
 var is_hurting := false ## Set to true when the entity enters the on_hurt state, false when it leaves it.
 var is_blocked := false: ## True when blocks_detector is colliding.
@@ -62,7 +70,8 @@ var is_falling := false ## Set to true when the entity enters the on_fall state,
 signal hit  
 ## Emitted when the entity's movement direction changes.  
 ## @param direction The new movement direction as a Vector2.
-signal direction_changed(direction: Vector2)  
+signal direction_changed(direction: Vector2)
+signal action_performed(action: String)
 
 func _ready():
 	_init_screen_notifier()
@@ -93,6 +102,10 @@ func _init_attack_cooldown_timer():
 	attack_cooldown_timer = Timer.new()
 	attack_cooldown_timer.one_shot = true
 	add_child(attack_cooldown_timer)
+
+##internal - Used to emit the action performed.
+func _emit_action(action: String, value: bool):
+	action_performed.emit(action if value else "")
 
 ##internal - Used to update the current animation in the AnimationTree with the facing direction.
 func _update_animation():
@@ -142,18 +155,16 @@ func move(direction):
 ##Starts a jump.
 func jump():
 	if not is_jumping:
-		safe_position = global_position
-		health_controller.immortal = true
 		is_jumping = true
-		collision_mask ^= (1 << 2) | (1 << 1)
+		safe_position = global_position
 		collision_layer ^= 1 << 1
+		collision_mask ^= (1 << 2) | (1 << 1)
 
 ##To be called at the end of a jump.
 func end_jump():
 	is_jumping = false
-	health_controller.immortal = false
-	collision_mask ^= (1 << 2) | (1 << 1)
 	collision_layer ^= 1 << 1
+	collision_mask ^= (1 << 2) | (1 << 1)
 
 ##Starts an attack.
 func attack():
