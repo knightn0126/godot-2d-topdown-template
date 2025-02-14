@@ -2,7 +2,9 @@ extends StateEntity
 ##Makes an entity wander around randomly.
 class_name StateWander
 
-@export var wander_time_range: = Vector2.ZERO ##Min (x) and max (y) range time values.
+## The time range (min: x, max: y) for changing the entity's wandering direction.  
+## A new direction is chosen after a random duration within this range.  
+@export var wander_time_range: = Vector2.ZERO  
 
 var wander_time: float
 var direction = Vector2.ZERO

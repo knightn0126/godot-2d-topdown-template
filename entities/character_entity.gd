@@ -58,8 +58,11 @@ var is_blocked := false: ## True when blocks_detector is colliding.
 		return blocks_detector.is_colliding() if blocks_detector != null else false
 var is_falling := false ## Set to true when the entity enters the on_fall state, false when it leaves it.
 
-signal hit ## Emitted when this entity hits something when attacks.
-signal direction_changed(direction: Vector2)
+## Emitted when this entity successfully lands an attack on a target.
+signal hit  
+## Emitted when the entity's movement direction changes.  
+## @param direction The new movement direction as a Vector2.
+signal direction_changed(direction: Vector2)  
 
 func _ready():
 	_init_screen_notifier()
