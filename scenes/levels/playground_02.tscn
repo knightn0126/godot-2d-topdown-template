@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://stlloemylyy0"]
+[gd_scene load_steps=96 format=4 uid="uid://stlloemylyy0"]
 
 [ext_resource type="PackedScene" uid="uid://b0b0jp36dubff" path="res://scenes/levels/Level.tscn" id="1_1jysu"]
 [ext_resource type="PackedScene" uid="uid://r3iqi7bb4jyw" path="res://scenes/props/potion.tscn" id="2_h8st3"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://cssu1tiytd4ep" path="res://scripts/state_machine/states/state_wander.gd" id="16_yfo47"]
 [ext_resource type="Script" uid="uid://ckva818l0y2ht" path="res://scripts/state_machine/states/state_path.gd" id="17_k1igu"]
 [ext_resource type="Script" uid="uid://blcymmqc06vw2" path="res://scripts/state_machine/states/state_navigation.gd" id="18_cgx8t"]
+[ext_resource type="Script" uid="uid://qa3ikcf8scy7" path="res://scripts/state_machine/states/state_face.gd" id="18_nowak"]
 [ext_resource type="Script" uid="uid://c6r5xohr5314y" path="res://scenes/system/target_manager.gd" id="27_dln11"]
 [ext_resource type="Script" uid="uid://qawe0cujhuns" path="res://scripts/Direction.gd" id="29_dddes"]
 
@@ -647,20 +648,9 @@ one_shot = false
 on_completion = [NodePath("../start_dialogue")]
 
 [node name="face_player" type="Node" parent="Entities/NPC/StateMachine/interact" index="0" node_paths=PackedStringArray("target_manager")]
-script = ExtResource("9_h8st3")
+script = ExtResource("18_nowak")
 target_manager = NodePath("../../../TargetManager")
 metadata/_custom_type_script = ExtResource("9_h8st3")
-
-[node name="speed-0" type="Node" parent="Entities/NPC/StateMachine/interact" index="1" node_paths=PackedStringArray("node")]
-script = ExtResource("10_cgx8t")
-node = NodePath("../../..")
-on_enter = Dictionary[String, Variant]({
-"speed_multiplier": 0.0
-})
-on_exit = Dictionary[String, Variant]({
-"speed_multiplier": 1.0
-})
-metadata/_custom_type_script = ExtResource("10_cgx8t")
 
 [node name="start_dialogue" type="Node" parent="Entities/NPC/StateMachine" index="1" node_paths=PackedStringArray("on_completion")]
 script = ExtResource("11_yfo47")
