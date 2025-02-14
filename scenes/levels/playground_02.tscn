@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://stlloemylyy0"]
+[gd_scene load_steps=93 format=4 uid="uid://stlloemylyy0"]
 
 [ext_resource type="PackedScene" uid="uid://b0b0jp36dubff" path="res://scenes/levels/Level.tscn" id="1_1jysu"]
 [ext_resource type="PackedScene" uid="uid://r3iqi7bb4jyw" path="res://scenes/props/potion.tscn" id="2_h8st3"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://cssu1tiytd4ep" path="res://scripts/state_machine/states/state_wander.gd" id="16_yfo47"]
 [ext_resource type="Script" uid="uid://ckva818l0y2ht" path="res://scripts/state_machine/states/state_path.gd" id="17_k1igu"]
 [ext_resource type="Script" uid="uid://blcymmqc06vw2" path="res://scripts/state_machine/states/state_navigation.gd" id="18_cgx8t"]
+[ext_resource type="Script" uid="uid://c6r5xohr5314y" path="res://scenes/system/target_manager.gd" id="27_dln11"]
 
 [sub_resource type="Resource" id="Resource_iu1m7"]
 script = ExtResource("4_dln11")
@@ -608,7 +609,7 @@ on_completion = [NodePath("../closed")]
 metadata/_custom_type_script = ExtResource("11_yfo47")
 
 [node name="P1" parent="Entities" index="0"]
-position = Vector2(-32, 192)
+position = Vector2(66, 308)
 
 [node name="NPC" parent="Entities" index="1" instance=ExtResource("2_tk081")]
 position = Vector2(64, 120)
@@ -639,9 +640,9 @@ action_trigger = "interact"
 one_shot = false
 on_completion = [NodePath("../start_dialogue")]
 
-[node name="face_player" type="Node" parent="Entities/NPC/StateMachine/interact" index="0"]
+[node name="face_player" type="Node" parent="Entities/NPC/StateMachine/interact" index="0" node_paths=PackedStringArray("target_manager")]
 script = ExtResource("9_h8st3")
-target_player_id = 1
+target_manager = NodePath("../../../TargetManager")
 metadata/_custom_type_script = ExtResource("9_h8st3")
 
 [node name="speed-0" type="Node" parent="Entities/NPC/StateMachine/interact" index="1" node_paths=PackedStringArray("node")]
@@ -660,6 +661,10 @@ script = ExtResource("11_yfo47")
 dialogue = ExtResource("12_k1igu")
 title = "forest_citizen_talk"
 on_completion = [NodePath("../interact")]
+
+[node name="TargetManager" type="Node2D" parent="Entities/NPC" index="11"]
+script = ExtResource("27_dln11")
+target_player_id = 1
 
 [node name="Enemy1" parent="Entities" index="2" instance=ExtResource("13_wnv1r")]
 position = Vector2(320, 129)
@@ -719,10 +724,10 @@ script = ExtResource("15_cgx8t")
 script = ExtResource("16_yfo47")
 wander_time_range = Vector2(1, 2)
 
-[node name="follow" type="Node" parent="Entities/Enemy1/ActionStates" index="3" node_paths=PackedStringArray("navigation_agent")]
+[node name="follow" type="Node" parent="Entities/Enemy1/ActionStates" index="3" node_paths=PackedStringArray("navigation_agent", "target_manager")]
 script = ExtResource("18_cgx8t")
 navigation_agent = NodePath("../../NavigationAgent2D")
-target_player_id = 1
+target_manager = NodePath("../../TargetManager")
 
 [node name="start_wander" type="Node" parent="Entities/Enemy1/ActionStates/follow" index="0" node_paths=PackedStringArray("interaction_area", "on_completion")]
 script = ExtResource("8_wnv1r")
@@ -774,6 +779,10 @@ metadata/_custom_type_script = ExtResource("10_cgx8t")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Entities/Enemy1" index="15"]
 path_postprocessing = 1
+
+[node name="TargetManager" type="Node2D" parent="Entities/Enemy1" index="16"]
+script = ExtResource("27_dln11")
+target_player_id = 1
 
 [node name="Transfer_West" parent="Transfers" index="0" instance=ExtResource("13_q0u2y")]
 position = Vector2(-80, 192)
