@@ -14,13 +14,14 @@ class_name State
 var active := false: ## Indicates whether the state is currently active and being processed by the StateMachine.
 	set(value):
 		active = value
-		process_mode = PROCESS_MODE_INHERIT if active else PROCESS_MODE_DISABLED
+		if !Engine.is_editor_hint():
+			process_mode = PROCESS_MODE_INHERIT if active else PROCESS_MODE_DISABLED
 var state_machine: StateMachine:
 	set(value):
 		state_machine = value
 		for state in get_children(true).filter(func(node): return node is State):
 			state.state_machine = value
-var timer: TimedState
+var timer: TimedState = null
 
 func _enter_tree():
 	if disabled:
@@ -29,10 +30,10 @@ func _enter_tree():
 		timer = TimedState.new()
 		timer.create(self, time_range)
 
-func enable(params = null): ## Enables this state.
+func enable(params = null, sender = null): ## Enables this state.
 	if params:
 		state_machine.params = params
-	state_machine.enable_state(self)
+	state_machine.enable_state(self, sender)
 	if timer:
 		timer.start()
 		await timer.timeout
@@ -60,7 +61,7 @@ func complete(params = null):
 
 func _enable_on_completion(params):
 	for state in on_completion:
-		state.enable(state_machine.params if !params else params)
+		state.enable(state_machine.params if !params else params, self)
 
 class TimedState:
 	var timer: Timer

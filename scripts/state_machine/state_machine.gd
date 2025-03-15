@@ -10,7 +10,7 @@ class_name StateMachine
 		current_state = value
 		current_state_name = current_state.name if current_state else StringName()
 		update_configuration_warnings()
-@export var start_delay := 0.0 ## Initiate the StateMachine after a brief delay.
+@export var start_delay := Vector2.ZERO ## If greater than 0, waits for N seconds before starting the StateMachine, where N is a random value between the minimum (x) and maximum (y) range.
 @export var disabled := false ## Controls whether to disable this StateMachine.
 @export var debug := false ## Logs state changes to the terminal.
 
@@ -32,8 +32,9 @@ func _ready():
 		set_physics_process(false)
 		return
 	await owner.ready
-	if start_delay > 0:
-		await get_tree().create_timer(start_delay).timeout
+	if start_delay > Vector2.ZERO:
+		var delay = randf_range(start_delay.x, start_delay.y)
+		await get_tree().create_timer(delay).timeout
 	_init_states()
 	_get_states()
 	_enter_states()
@@ -54,7 +55,7 @@ func _get_states():
 		if child is State and !child.disabled:
 			states.append(child)
 
-func enable_state(state: State):
+func enable_state(state: State, sender = null):
 	if state == current_state:
 		return
 	if current_state:
@@ -63,7 +64,7 @@ func enable_state(state: State):
 	current_state = state
 	state_changed.emit(previous_state, current_state)
 	_get_states()
-	_enter_states()
+	_enter_states(sender)
 
 func disable_state(_state: State):
 	_exit_states()
@@ -76,12 +77,12 @@ func _process(delta):
 func _physics_process(delta):
 	_physics_update_states(delta)
 
-func _enter_states():
+func _enter_states(sender = null):
 	for state in states:
 		state.enter()
 		state.active = !disabled
 	if debug:
-		print("%s entered states: %s" % [get_parent().name, states.map(func(state): return state.name)])
+		print("%s entered states: %s - Sender: %s" % [get_parent().name, states.map(func(state): return state.name), sender])
 
 func _exit_states():
 	for state in states:
