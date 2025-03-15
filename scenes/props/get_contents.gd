@@ -6,7 +6,7 @@ extends Node2D
 signal contents_got
 
 func get_contents(params):
-	var entity: CharacterEntity = params["entity"]
+	var entity: CharacterEntity = params.get("entity", null)
 	if !entity:
 		push_warning("Entity is missing in %s" % [get_path()])
 		return
