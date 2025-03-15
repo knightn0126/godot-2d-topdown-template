@@ -6,6 +6,7 @@ class_name TweenData
 @export var delay := 0.0
 @export var property := ""
 @export var end_value := ""
+@export var reset_value_at_end := true
 
 var start_value
 var target_value

@@ -21,4 +21,5 @@ func enter():
 
 func exit():
 	for t in tweens:
-		object.set(t.property, t.start_value)
+		if t.reset_value_at_end:
+			object.set(t.property, t.start_value)
