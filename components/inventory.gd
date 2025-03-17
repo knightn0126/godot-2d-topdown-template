@@ -24,6 +24,7 @@ func toggle_inventory():
 	get_tree().paused = is_open
 	if is_open:
 		_update_item_list()
+		item_list.grab_focus()
 	else:
 		item_list.clear()
 
