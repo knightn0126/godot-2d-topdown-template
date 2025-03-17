@@ -582,21 +582,6 @@ tile_map_data = PackedByteArray("AAAkAP//CQAXAAIAAAAkAP7/CQAXAAEAAAAkAP3/CQAXAAE
 [node name="Potion" parent="Props" index="0" instance=ExtResource("2_h8st3")]
 position = Vector2(560, 256)
 
-[node name="InteractionArea" parent="Props/Potion" index="0"]
-metadata/_custom_type_script = "uid://bgm8n3pwwbymt"
-
-[node name="RecoveryBox" parent="Props/Potion" index="1"]
-metadata/_custom_type_script = "uid://c0icpyv7syk84"
-
-[node name="idle_animation" parent="Props/Potion/StateMachine/idle" index="0"]
-metadata/_custom_type_script = "uid://btmy7sadqiuav"
-
-[node name="enable_recover_area" parent="Props/Potion/StateMachine" index="1"]
-metadata/_custom_type_script = "uid://di3e8lyqvjft4"
-
-[node name="picked" parent="Props/Potion/StateMachine" index="2"]
-metadata/_custom_type_script = "uid://di3e8lyqvjft4"
-
 [node name="Chest" parent="Props" index="1" instance=ExtResource("3_tl0j8")]
 position = Vector2(736, 224)
 contents = Array[ExtResource("4_dln11")]([SubResource("Resource_iu1m7")])

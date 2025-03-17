@@ -107,6 +107,7 @@ duration = 0.2
 delay = 0.1
 property = "scale"
 end_value = "Vector2(0.1,0.2)"
+reset_value_at_end = true
 
 [sub_resource type="Curve" id="Curve_jy2bj"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
@@ -120,6 +121,7 @@ duration = 0.1
 delay = 0.0
 property = "position"
 end_value = "Vector2(10,0)"
+reset_value_at_end = true
 
 [node name="Chest" type="Sprite2D"]
 y_sort_enabled = true

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bdrg8b2dg7k5s" path="res://addons/tile_bit_tools/controls/tiles_inspector/tiles_inspector.gd" id="1_hyl5p"]
 [ext_resource type="Texture2D" uid="uid://b4qgn53bm6n77" path="res://addons/tile_bit_tools/controls/icons/tile_bit_tools_16.svg" id="3_pojdm"]
 [ext_resource type="PackedScene" uid="uid://tj1gu603wkvo" path="res://addons/tile_bit_tools/controls/shared/inspector_section_button.tscn" id="4_2qwfq"]
-[ext_resource type="PackedScene" path="res://addons/tile_bit_tools/controls/tiles_inspector/tool_buttons/tool_buttons.tscn" id="4_vjqmp"]
-[ext_resource type="PackedScene" path="res://addons/tile_bit_tools/controls/tiles_inspector/template_section/templates_section.tscn" id="6_xgtwo"]
+[ext_resource type="PackedScene" uid="uid://c85vmipcsmtdc" path="res://addons/tile_bit_tools/controls/tiles_inspector/tool_buttons/tool_buttons.tscn" id="4_vjqmp"]
+[ext_resource type="PackedScene" uid="uid://bl62xbehc0flu" path="res://addons/tile_bit_tools/controls/tiles_inspector/template_section/templates_section.tscn" id="6_xgtwo"]
 
 [node name="TilesInspector" type="VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)

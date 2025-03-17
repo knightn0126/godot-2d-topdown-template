@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://0y4v210tr2my"]
 
-[ext_resource type="PackedScene" path="res://addons/tile_bit_tools/controls/tbt_plugin_control/popups/save_template_dialog.tscn" id="1_5jw1t"]
+[ext_resource type="PackedScene" uid="uid://hxepqcu2p6wa" path="res://addons/tile_bit_tools/controls/tbt_plugin_control/popups/save_template_dialog.tscn" id="1_5jw1t"]
 [ext_resource type="Script" uid="uid://duwl63edvjbom" path="res://addons/tile_bit_tools/controls/tbt_plugin_control/popups/edit_template_dialog.gd" id="2_bgxlq"]
 
 [node name="EditTemplateDialog" instance=ExtResource("1_5jw1t")]
