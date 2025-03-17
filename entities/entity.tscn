@@ -473,7 +473,7 @@ radius = 3.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_528vq"]
 size = Vector2(22, 20)
 
-[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "sync_rotation", "blocks_detector", "fall_detector")]
+[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("animation_tree", "sync_rotation", "hit_box", "blocks_detector", "fall_detector")]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 7
@@ -482,6 +482,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_g6455")
 animation_tree = NodePath("AnimationTree")
 sync_rotation = [NodePath("BlocksDetector"), NodePath("HitBox"), NodePath("HurtBox")]
+hit_box = NodePath("HitBox")
 blocks_detector = NodePath("BlocksDetector")
 fall_detector = NodePath("FallDetector")
 

@@ -7,9 +7,11 @@ extends CharacterBody2D
 @export var animation_tree: AnimationTree ## The AnimationTree attached to this entity, needed to manage animations.
 @export var sync_rotation: Array[Node2D] ## A list of nodes that update their rotation based on the direction the entity is facing.
 @export var health_controller: HealthController ## The HealthController that handles this entity hp.
+@export var hit_box: HitBox ## The HitBox node that handles the entity's hit detection.
 @export var inventory: Inventory = null ## The inventory of the entity.
-## The initial direction the entity will face when spawned.  
-@export var initial_facing: Direction
+@export var weapon: DataWeapon: set = _set_weapon ## The weapon equipped by the entity.
+@export var initial_facing: Direction ## The initial direction the entity will face when spawned.
+
 @export_group("Movement")
 @export var max_speed = 300.0 ## The maximum speed the entity can reach while moving.
 @export var friction = 2000.0 ## Affects the time it takes for the entity to reach max_speed or to stop.
@@ -18,9 +20,7 @@ extends CharacterBody2D
 @export var running_particles: GPUParticles2D = null ## A GPUParticles2D to enable when the entity is running (is_running == true).
 var speed_multiplier := 1.0
 var friction_multiplier := 1.0
-@export_group("Attack")
-@export var attack_power := 2 ## The value this entity subtracts from another entity's HP when it attacks.
-@export var attack_speed := 0.08 ## Affects the cooldown time between attacks.
+
 @export_group("States")
 @export var on_attack: State ## State to enable when this entity attacks.
 @export var on_hit: State ## State to enable when this entity damages another entity.
@@ -78,6 +78,7 @@ signal action_performed(action: String)
 func _ready():
 	_init_screen_notifier()
 	_init_attack_cooldown_timer()
+	_init_inventory()
 	animation_tree.active = true
 	hit.connect(func(): if on_hit: enable_state(on_hit))
 	if initial_facing:
@@ -101,10 +102,22 @@ func _init_screen_notifier():
 			screen_notifier.screen_exited.connect(func(): enable_state(on_screen_exited))
 		add_child(screen_notifier)
 
+func _set_weapon(_weapon: DataWeapon):
+		weapon = _weapon
+		if hit_box and weapon:
+			print_debug("%s equipped weapon: %s" % [name, weapon.resource_name])
+			if attack_cooldown_timer:
+				attack_cooldown_timer.stop()
+			hit_box.hp_change = weapon.power
+
 func _init_attack_cooldown_timer():
 	attack_cooldown_timer = Timer.new()
 	attack_cooldown_timer.one_shot = true
 	add_child(attack_cooldown_timer)
+
+func _init_inventory():
+	if inventory:
+		inventory.equip_weapon.connect(func(_weapon: DataWeapon): weapon = _weapon)
 
 ##internal - Used to emit the action performed.
 func _emit_action(action: String, value: bool):
@@ -178,17 +191,12 @@ func end_jump():
 
 ##Starts an attack.
 func attack():
-	if is_attacking or is_jumping or attack_cooldown_timer.time_left > 0:
+	if !weapon or is_attacking or is_jumping or attack_cooldown_timer.time_left > 0:
 		return
 	else:
-		attack_cooldown_timer.stop()
+		attack_cooldown_timer.start(weapon.speed)
 		if on_attack:
 			enable_state(on_attack)
-
-##To be called at the end of an attack.
-func end_attack():
-	if attack_cooldown_timer:
-			attack_cooldown_timer.start(attack_speed)
 
 ##Applies a flash to all children Sprite2D nodes found in group "flash" of the entity. 
 func flash(power := 0.0, duration := 0.15, color := Color.TRANSPARENT):

@@ -12,4 +12,4 @@ target_manager = NodePath("TargetManager")
 [node name="TargetManager" type="Node2D" parent="."]
 script = ExtResource("2_htxl8")
 target_player_id = 1
-metadata/_custom_type_script = ExtResource("2_htxl8")
+metadata/_custom_type_script = "uid://c6r5xohr5314y"

@@ -1,6 +1,5 @@
-extends Resource
 class_name DataItem
+extends Resource
 
-@export var icon: Texture2D
-@export var change_hp: int = 0
-@export var hide_from_inventory := false ##Item will not appear in any inventory.
+@export var icon: AtlasTexture ## The icon of the item.
+@export var hide_from_inventory := false ## If true, this item will not be shown in the inventory.

@@ -586,7 +586,6 @@ position = Vector2(560, 256)
 metadata/_custom_type_script = "uid://bgm8n3pwwbymt"
 
 [node name="RecoveryBox" parent="Props/Potion" index="1"]
-change_hp = 20
 metadata/_custom_type_script = "uid://c0icpyv7syk84"
 
 [node name="idle_animation" parent="Props/Potion/StateMachine/idle" index="0"]
