@@ -103,12 +103,12 @@ func _init_screen_notifier():
 		add_child(screen_notifier)
 
 func _set_weapon(_weapon: DataWeapon):
-		weapon = _weapon
-		if hit_box and weapon:
-			print_debug("%s equipped weapon: %s" % [name, weapon.resource_name])
-			if attack_cooldown_timer:
-				attack_cooldown_timer.stop()
-			hit_box.hp_change = weapon.power
+	weapon = _weapon
+	if hit_box and weapon:
+		print_debug("%s equipped weapon: %s" % [name, weapon.resource_name])
+		if attack_cooldown_timer:
+			attack_cooldown_timer.stop()
+		hit_box.hp_change = weapon.power
 
 func _init_attack_cooldown_timer():
 	attack_cooldown_timer = Timer.new()
