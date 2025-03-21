@@ -13,8 +13,8 @@ extends CharacterBody2D
 @export var initial_facing: Direction ## The initial direction the entity will face when spawned.
 
 @export_group("Movement")
-@export var max_speed = 300.0 ## The maximum speed the entity can reach while moving.
-@export var friction = 2000.0 ## Affects the time it takes for the entity to reach max_speed or to stop.
+@export var max_speed = 500.0 ## The maximum speed the entity can reach while moving.
+@export var friction = 10000.0 ## Affects the time it takes for the entity to reach max_speed or to stop.
 @export var blocks_detector: RayCast2D ## A RayCast2D node to identify when the entity is in front of a tile or element that blocks it.
 @export var fall_detector: ShapeCast2D ## A ShapeCast2D node that identifies when the entity is falling, triggering the "on_fall" state.
 @export var running_particles: GPUParticles2D = null ## A GPUParticles2D to enable when the entity is running (is_running == true).
